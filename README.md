@@ -7,11 +7,14 @@
 ## Установка
 
 - `npm run dev` — запуск версии для разработчика,
-- `npm run start` — сборка и запуск на локально,
+- `npm run start` — сборка и запуск стабильной версии локально,
 - `npm run build` — сборка стабильной версии.
 
 ## Ссылка на макет в Figma
 https://www.figma.com/file/GlBCOegk56WmcpbRkYOTIX/Chat_external_link-(Copy)?node-id=0%3A1&t=wxDwHouc2xSItVZ7-3
+
+## Ссылка на опубликованную версию
+https://63911f1d45f44a0009c46ef7--luxury-fudge-16f55d.netlify.app/
 
 ## Стэк используемых технологий 
 - Parcel
