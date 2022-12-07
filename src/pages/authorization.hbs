@@ -1,0 +1,14 @@
+{{!< desktop}}
+<div class="container">
+    <div class="auth-page">
+        <form class="auth-page__top">
+            {{> "ui/page-title/pageTitle" title="Вход"}}
+            {{> "ui/input/input" name="login" fieldName="Логин" type="text"}}
+            {{> "ui/input/input" name="password" fieldName="Пароль" type="password"}}
+        </form>
+        <div class="auth-page__bottom">
+            {{> "ui/button/button" style="primary fill" text="Авторизоваться" type="submit"}}
+            {{> "ui/link/link" text="Нет аккаунта?" href="registration.hbs"}}
+        </div>
+    </div>
+</div>

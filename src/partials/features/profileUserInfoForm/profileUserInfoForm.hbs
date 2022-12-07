@@ -1,0 +1,14 @@
+<div class="profile-user-info-form">
+    {{#if password}}
+        {{> "ui/input/input" userValue=data.oldPassword disabled="disabled" fieldName="Старый пароль" type="password" name="oldPassword"}}
+        {{> "ui/input/input" userValue=data.newPassword disabled="disabled" fieldName="Новый пароль" type="password" name="newPassword"}}
+        {{> "ui/input/input" userValue=data.newPassword disabled="disabled" fieldName="Повторите новый пароль" type="password" name="newPassword"}}
+    {{else}}
+        {{> "ui/input/input" userValue=data.email disabled="disabled" fieldName="Почта" type="text" name="email"}}
+        {{> "ui/input/input" userValue=data.login disabled="disabled" fieldName="Логин" type="text" name="login"}}
+        {{> "ui/input/input" userValue=data.login disabled="disabled" fieldName="Имя в чате" type="text" name="display_name"}}
+        {{> "ui/input/input" userValue=data.firstName disabled="disabled" fieldName="Имя" type="text" name="first_name"}}
+        {{> "ui/input/input" userValue=data.lastName disabled="disabled" fieldName="Фамилия" type="text" name="second_name"}}
+        {{> "ui/input/input" userValue=data.phone disabled="disabled" fieldName="Телефон" type="text" name="phone"}}
+    {{/if}}
+</div>

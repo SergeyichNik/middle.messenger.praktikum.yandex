@@ -1,0 +1,31 @@
+---
+{
+data: {
+firstName: 'Chair',
+lastName: 'Sofa',
+email: 'mychat@chat.my',
+phone: '+765432154321',
+login: 'Table',
+}
+}
+---
+{{!< desktop }}
+
+
+<div class="container">
+    <div class="profile">
+        <div class="profile-header">
+            <div class="back-button">
+                {{> "ui/button/button" iconBefore="../assets/icons/chevron-left.svg" style="primary round"}}
+            </div>
+            {{> "ui/avatarPicker/avatarPicker" disabled src="avatar-2.c91c750c.png" hoverText="Поменять аватар"}}
+            <p class="profile-name">{{this.data.login}}</p>
+        </div>
+        {{> "features/profileUserInfoForm/profileUserInfoForm" data=this.data}}
+        <div class="profile-buttons">
+            {{> "ui/button/button" text="Изменить данные" style="text"}}
+            {{> "ui/button/button" text="Изменить пароль" style="text"}}
+            {{> "ui/button/button" text="Выйти" style="text"}}
+        </div>
+    </div>
+</div>
