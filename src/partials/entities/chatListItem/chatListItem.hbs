@@ -1,0 +1,7 @@
+<div class="chat-list-item">
+    {{> "ui/avatar/avatar" id="chat-list-chatImage" src=chatImage}}
+    {{> "ui/pTag/pTag" id="chat-list-chatName" value=chatName}}
+    {{> "ui/pTag/pTag" id="chat-list-time" value=time style="p-tag__small gray"}}
+    {{> "ui/pTag/pTag" id="chat-list-lastMessage" value=lastMessage style="p-tag__medium gray"}}
+    {{> "ui/notificationBadge/notificationBadge" id="chat-list-badge" value=unreadMessageCount}}
+</div>
