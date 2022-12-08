@@ -1,0 +1,35 @@
+.avatar-picker {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: 130px;
+    height: 130px;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+.avatar-picker input {
+    width: 130px;
+    height: 130px;
+    border-radius: 100%;
+}
+
+.avatar-picker span {
+    display: none;
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    line-height: 130px;
+    text-align: center;
+    color: var(--gray-light);
+    background-color: rgba(70, 69, 69, 0.47);
+    border-radius: 100%;
+    transition: 0.3s all;
+}
+
+.avatar-picker:hover .avatar-picker-hover-layer {
+    display: inline;
+}
