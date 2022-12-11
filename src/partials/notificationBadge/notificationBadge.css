@@ -1,0 +1,11 @@
+.notification-badge {
+    min-width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 10px;
+    padding: 0 5px;
+    font-size: 12px;
+    background-color: var(--primary);
+    color: var(--white)
+}

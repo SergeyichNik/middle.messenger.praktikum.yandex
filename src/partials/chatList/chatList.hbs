@@ -1,0 +1,22 @@
+<div class="chat-list-container">
+    <div class="chat-list-buttons">
+        {{> "button/button" style="round" iconBefore="../assets/icons/plus.svg"}}
+        {{> "button/button" style="gray_text" text="Профиль" iconAfter="../assets/icons/chevron-right.svg"}}
+    </div>
+    {{> "searchField/searchField" icon="../assets/icons/search.svg" placeholder="Поиск..." }}
+    <ul class="chat-list">
+        {{#each data}}
+            <li>
+                <a href="#">
+                    {{> "chatListItem/chatListItem"
+                            chatName=this.chatName
+                            chatImage=this.chatImage
+                            unreadMessageCount=this.unreadMessageCount
+                            time=this.time
+                            lastMessage=this.lastMessage
+                    }}
+                </a>
+            </li>
+        {{/each}}
+    </ul>
+</div>

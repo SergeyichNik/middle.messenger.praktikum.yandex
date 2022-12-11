@@ -1,0 +1,18 @@
+.mat__not-found {
+    text-align: center;
+}
+
+.not-found__code {
+    color: var(--base);
+    margin: 0 0 20px 0;
+    font-weight: 500;
+    font-size: 60px;
+}
+
+.not-found__text {
+    color: var(--base);
+    margin: 0 0 40px 0;
+    font-weight: 500;
+    font-size: 30px;
+
+}

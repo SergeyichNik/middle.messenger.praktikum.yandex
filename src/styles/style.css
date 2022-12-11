@@ -1,0 +1,107 @@
+@import "../partials/**/*.css";
+
+@import "./pages/*.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500;600&display=swap');
+
+:root {
+    --white: #ffffff;
+    --primary: #3369F3;
+    --primary-up: #0e4ff5;
+    --base: #1E1E1E;
+    --gray: #999999;
+    --gray-light: #dad9d9;
+    --red: #FF0000;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #EFEFEF;
+
+    box-sizing: border-box;
+    font-size: 14px;
+    margin: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mat {
+    padding: 30px;
+    box-shadow: 0 0 6px var(--gray);
+    border-radius: 12px;
+    background-color: var(--white);
+}
+
+.auth-page {
+    margin: 0 auto;
+    padding: 30px;
+    width: 340px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 6px var(--gray);
+    border-radius: 12px;
+    background-color: var(--white);
+}
+
+.auth-page__top {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+}
+
+.auth-page__bottom {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+    align-items: center;
+    height: 100px;
+}
+
+.registration-page {
+    margin: 0 auto;
+    padding: 30px;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 6px var(--gray);
+    border-radius: 12px;
+    background-color: var(--white);
+}
+
+.registration-page__top {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.registration-page__bottom {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+    align-items: center;
+    height: 100px;
+}
