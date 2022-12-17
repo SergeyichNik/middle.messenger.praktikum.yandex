@@ -1,21 +1,22 @@
 .p-tag {
-    margin: 0;
-    font-weight: 600;
-    font-size: 14px;
+  margin: 0;
 
-    color: var(--base);
+  color: var(--base);
+
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .gray {
-    color: var(--gray);
+  color: var(--gray);
 }
 
 .p-tag__medium {
-    font-weight: 500;
-    font-size: 12px;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .p-tag__small {
-    font-weight: 500;
-    font-size: 10px;
+  font-size: 10px;
+  font-weight: 500;
 }

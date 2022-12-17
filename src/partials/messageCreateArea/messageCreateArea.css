@@ -1,15 +1,17 @@
 .message-create-area {
-    border-top: 1px solid var(--gray);
-    padding: 20px 20px 0 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: auto;
-    width: 100%;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 100%;
+  margin-top: auto;
+  padding: 20px 20px 0;
+
+  border-top: 1px solid var(--gray);
+  gap: 10px;
 }
 
 .message-create-area__input {
-    width: 100%;
+  width: 100%;
 }

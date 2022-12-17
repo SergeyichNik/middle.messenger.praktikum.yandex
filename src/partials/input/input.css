@@ -1,39 +1,47 @@
 .input-container {
-    margin: 15px 0;
-    width: 100%;
-    position: relative;
+  position: relative;
+
+  width: 100%;
+  margin: 15px 0;
 }
 
 .input-container span {
-    padding: 0 5px;
-    font-size: 14px;
-    position: absolute;
-    color: var(--gray);
-    pointer-events: none;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: 0.3s all;
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  padding: 0 5px;
+
+  transition: 0.3s all;
+  transform: translateY(-50%);
+  pointer-events: none;
+
+  color: var(--gray);
+
+  font-size: 14px;
 }
 
 .input-container input {
-    width: 100%;
-    height: 28px;
-    border: none;
-    outline: none;
-    font-weight: 500;
-    font-size: 14px;
-    color: var(--base);
-    background: transparent;
-    border-bottom: 1px solid var(--primary);
+  width: 100%;
+  height: 28px;
+
+  color: var(--base);
+  border: none;
+  border-bottom: 1px solid var(--primary);
+  outline: none;
+  background: transparent;
+
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .input-container input:valid ~ span,
 .input-container input:focus ~ span {
-    transform: translateX(-5px) translateY(-25px);
-    font-size: 10px;
+  transform: translateX(-5px) translateY(-25px);
+
+  font-size: 10px;
 }
 
 .input-container input:disabled {
-    text-align: right;
+  text-align: right;
 }

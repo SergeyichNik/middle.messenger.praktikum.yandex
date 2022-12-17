@@ -1,18 +1,21 @@
 .mat__not-found {
-    text-align: center;
+  text-align: center;
 }
 
 .not-found__code {
-    color: var(--base);
-    margin: 0 0 20px 0;
-    font-weight: 500;
-    font-size: 60px;
+  margin: 0 0 20px;
+
+  color: var(--base);
+
+  font-size: 60px;
+  font-weight: 500;
 }
 
 .not-found__text {
-    color: var(--base);
-    margin: 0 0 40px 0;
-    font-weight: 500;
-    font-size: 30px;
+  margin: 0 0 40px;
 
+  color: var(--base);
+
+  font-size: 30px;
+  font-weight: 500;
 }

@@ -1,7 +1,9 @@
 .page-title {
-    margin: 20px 0;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 20px;
-    color: var(--base);
+  margin: 20px 0;
+
+  color: var(--base);
+
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 20px;
 }
