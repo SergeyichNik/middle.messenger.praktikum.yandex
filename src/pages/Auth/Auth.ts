@@ -1,6 +1,6 @@
 import Block from 'core/Block';
 import './style.css';
-import { validateForm } from '../../utils/validateForm';
+import { validateForm, ValidateRule } from '../../utils/validateForm';
 
 export class Auth extends Block {
   static componentName = 'Auth';
@@ -32,16 +32,10 @@ export class Auth extends Block {
   }
 
   onSubmit(): void {
-    const { error, isValid } = validateForm([
-      {
-        type: 'login',
-        value: this.state.login,
-      },
-      {
-        type: 'password',
-        value: this.state.password,
-      },
-    ]);
+    const rules = Object.entries(this.state).map(
+      ([key, value]) => ({ type: key, value } as ValidateRule),
+    );
+    const { error, isValid } = validateForm(rules);
 
     Object.entries(error).forEach(([key, value]) => {
       // @ts-expect-error
