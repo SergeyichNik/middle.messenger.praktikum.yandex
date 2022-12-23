@@ -21,6 +21,7 @@
   "overrides": [
   ],
   "rules": {
+    "no-console": "warn",
     "non-null-asertation": 0,
     "max-len": [
       2,
