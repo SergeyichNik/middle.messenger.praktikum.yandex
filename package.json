@@ -14,21 +14,21 @@
     "stylelint": "stylelint \"**/*.css\"",
     "stylelint:fix": "stylelint \"**/*.css\" --fix"
   },
-  "targets" : {
-    "regular" : {
-      "context" : "browser",
-      "includeNodeModules" : {
+  "targets": {
+    "regular": {
+      "context": "browser",
+      "includeNodeModules": {
         "handlebars": true,
         "nanoid": true
       }
     }
   },
-
   "alias": {
     "components": "./src/components",
     "core": "./src/core",
     "pages": "./src/pages",
-    "utils": "./src/utils"
+    "utils": "./src/utils",
+    "assets": "./src/assets"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,7 @@
   "homepage": "https://github.com/SergeyichNik/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
     "@parcel/resolver-glob": "2.8.0",
+    "@types/node": "^18.11.17",
     "@typescript-eslint/eslint-plugin": "5.46.1",
     "@typescript-eslint/parser": "5.46.1",
     "eslint": "8.22.0",
