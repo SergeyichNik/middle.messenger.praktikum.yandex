@@ -2,8 +2,12 @@ export type ValidateRuleType =
   | 'phone'
   | 'email'
   | 'login'
+  | 'display_name'
   | 'password'
   | 'password_confirm'
+  | 'oldPassword'
+  | 'newPassword'
+  | 'newPasswordConfirm'
   | 'first_name'
   | 'second_name'
   | 'message';
@@ -16,7 +20,7 @@ const NON_NUMERIC_PATTERN = /^\d+$/;
 const LOGIN_PATTERN = /^[a-zA-Z\d_-]+$/;
 const PASSWORD_PATTERN = /^.*[A-Z][.\d].*$/;
 
-interface ValidateRule {
+export interface ValidateRule {
   value: string;
   type: ValidateRuleType;
 }
@@ -31,11 +35,11 @@ export const validateForm = (rules: ValidateRule[]): ReturnValidate => {
 
   rules.forEach(({ value, type }) => {
     if (type === 'login') {
-      if (value.length === 0) {
+      if (value?.length === 0) {
         error[type] = 'Login can not be empty';
-      } else if (value.length < 4) {
+      } else if (value?.length < 4) {
         error[type] = 'Login should contains more than 3 letters';
-      } else if (value.length > 20) {
+      } else if (value?.length > 20) {
         error[type] = 'Login should contains no more than 20 letters';
       } else if (!LOGIN_PATTERN.test(value) || NON_NUMERIC_PATTERN.test(value)) {
         error[type] = 'Login can contain Latin letters, numbers, dashes and underscores';
@@ -43,12 +47,18 @@ export const validateForm = (rules: ValidateRule[]): ReturnValidate => {
         error[type] = '';
       }
     }
-    if (type === 'password' || type === 'password_confirm') {
-      if (value.length === 0) {
+    if (
+      type === 'password' ||
+      type === 'password_confirm' ||
+      type === 'oldPassword' ||
+      type === 'newPassword' ||
+      type === 'newPasswordConfirm'
+    ) {
+      if (value?.length === 0) {
         error[type] = 'Password can not be empty';
-      } else if (value.length < 8) {
+      } else if (value?.length < 8) {
         error[type] = 'Password should contains more than 7 letters';
-      } else if (value.length > 40) {
+      } else if (value?.length > 40) {
         error[type] = 'Password should contains no more than 40 letters';
       } else if (!PASSWORD_PATTERN.test(value)) {
         error[type] = 'Password must contain at least one uppercase letter and a number';
@@ -67,16 +77,16 @@ export const validateForm = (rules: ValidateRule[]): ReturnValidate => {
       }
     }
     if (type === 'first_name' || type === 'second_name') {
-      if (value.length === 0) {
+      if (value?.length === 0) {
         error[type] = 'Field can not be empty';
-      } else if (value.length < 4) {
+      } else if (value?.length < 4) {
         error[type] = 'Field should contains more than 3 letters';
       } else if (!NAME_PATTERN.test(value)) {
         error[type] = 'Field must contain Latin or Cyrillic, the first letter must be capitalized';
       }
     }
     if (type === 'message') {
-      if (value.length === 0) {
+      if (value?.length === 0) {
         error[type] = 'Empty message';
       }
     }
