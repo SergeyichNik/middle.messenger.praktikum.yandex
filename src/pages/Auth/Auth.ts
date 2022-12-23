@@ -11,17 +11,16 @@ export class Auth extends Block {
       login: '',
       password: '',
     };
+
     this.setProps({
       onSubmit: this.onSubmit.bind(this),
       onInput: (e: InputEvent) => {
         const input = e.currentTarget as HTMLInputElement;
-        // @ts-expect-error
-        this.refs?.loginInputRef.refs.errorRef?.setProps({
-          text: '',
-        });
-        // @ts-expect-error
-        this.refs?.passwordInputRef.refs.errorRef?.setProps({
-          text: '',
+        Object.keys(this.state).forEach(key => {
+          // @ts-expect-error
+          this.refs?.[`${key}InputRef`].refs.errorRef?.setProps({
+            text: '',
+          });
         });
         this.setState({
           [input.name]: input.value,
@@ -43,14 +42,14 @@ export class Auth extends Block {
         value: this.state.password,
       },
     ]);
-    // @ts-expect-error
-    this.refs?.loginInputRef.refs.errorRef?.setProps({
-      text: error.login,
+
+    Object.entries(error).forEach(([key, value]) => {
+      // @ts-expect-error
+      this.refs?.[`${key}InputRef`].refs.errorRef?.setProps({
+        text: value,
+      });
     });
-    // @ts-expect-error
-    this.refs?.passwordInputRef.refs.errorRef?.setProps({
-      text: error.password,
-    });
+
     if (isValid) {
       console.log(this.state);
     }
