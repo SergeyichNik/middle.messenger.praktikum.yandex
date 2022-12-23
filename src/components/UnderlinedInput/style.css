@@ -37,7 +37,7 @@
 
 .underlined-input__controller input:valid ~ span,
 .underlined-input__controller input:focus ~ span {
-  transform: translateX(-5px) translateY(-25px);
+  transform: translateX(-5px) translateY(-22px);
 
   font-size: 10px;
 }
