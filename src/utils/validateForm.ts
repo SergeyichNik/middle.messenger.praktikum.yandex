@@ -3,6 +3,7 @@ export type ValidateRuleType =
   | 'email'
   | 'login'
   | 'password'
+  | 'password_confirm'
   | 'first_name'
   | 'second_name'
   | 'message';
@@ -37,13 +38,12 @@ export const validateForm = (rules: ValidateRule[]): ReturnValidate => {
       } else if (value.length > 20) {
         error[type] = 'Login should contains no more than 20 letters';
       } else if (!LOGIN_PATTERN.test(value) || NON_NUMERIC_PATTERN.test(value)) {
-        console.log('login', LOGIN_PATTERN.test(value) || NON_NUMERIC_PATTERN.test(value));
         error[type] = 'Login can contain Latin letters, numbers, dashes and underscores';
       } else {
         error[type] = '';
       }
     }
-    if (type === 'password') {
+    if (type === 'password' || type === 'password_confirm') {
       if (value.length === 0) {
         error[type] = 'Password can not be empty';
       } else if (value.length < 8) {
