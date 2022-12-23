@@ -27,6 +27,7 @@
       2,
       100
     ],
+    "@typescript-eslint/consistent-type-assertions": 0,
     "@typescript-eslint/prefer-nullish-coalescing": 0,
     "@typescript-eslint/no-unused-vars": 2,
     "@typescript-eslint/strict-boolean-expressions": 0
