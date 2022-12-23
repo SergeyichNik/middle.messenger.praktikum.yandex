@@ -1,6 +1,6 @@
 export interface UnderlinedInputProps {
-  label: string;
-  disabled: boolean;
+  label?: string;
+  disabled?: string;
   required?: string;
   error?: string;
   placeholder?: string;
@@ -13,9 +13,9 @@ export interface UnderlinedInputProps {
 }
 
 export interface UnderlinedInputControllerProps {
-  label: string;
-  disabled: boolean;
-  innerRef: string;
+  label?: string;
+  disabled?: string;
+  innerRef?: string;
   placeholder?: string;
   onInput?: () => void;
   onFocus?: () => void;

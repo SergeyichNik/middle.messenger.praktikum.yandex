@@ -24,6 +24,14 @@
   background: var(--primary-up);
 }
 
+.button-arrow__left {
+  content: url("../../assets/icons/chevron-left.svg");
+}
+
+.button-arrow__right {
+  content: url("../../assets/icons/chevron-right.svg");
+}
+
 .text,
 .text:active {
   color: var(--primary);

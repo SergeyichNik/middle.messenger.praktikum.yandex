@@ -149,7 +149,8 @@ export class Registration extends Block {
                     {{{ Button style="primary fill" 
                                label="Зарегестрироваться"
                                onClick=onSubmit
-                               type="submit"}}}
+                               type="submit"
+                    }}}
                     {{{ Link text="Войти" href="#"}}}
                 </div>
             </div>

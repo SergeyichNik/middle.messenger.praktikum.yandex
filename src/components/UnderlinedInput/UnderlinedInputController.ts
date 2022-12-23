@@ -6,9 +6,10 @@ import { validateForm } from '../../utils/validateForm';
 export class UnderlinedInputController extends Block {
   static componentName = 'UnderlinedInputController';
 
-  constructor({ ...props }: UnderlinedInputControllerProps) {
+  constructor({ disabled, ...props }: UnderlinedInputControllerProps) {
     super({
       ...props,
+      disabled,
       onBlur: (e: FocusEvent): void => {
         const input = e.target as HTMLInputElement;
         const { error } = validateForm([
@@ -33,7 +34,9 @@ export class UnderlinedInputController extends Block {
                     onInput=onInput
                     onFocus=onFocus
                     onBlur=onBlur
+                    value=value
                     type=type
+                    disabled=disabled
                     placeholder=placeholder
                     error=text
                     name=name

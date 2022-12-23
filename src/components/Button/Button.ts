@@ -18,15 +18,20 @@ export class Button extends Block {
   protected render(): string {
     // language=hbs
     return `
-        <button class="button {{style}}" type={{type}}>
-            {{#if iconBefore}}
-                <img class="button-icon" alt="icon" src={{iconBefore}} />
+        <button class="button {{style}}" 
+                type={{type}} 
+            {{#if dataAttribute}}
+                data-{{dataAttribute}}={{dataAttributeValue}}
+            {{/if}}
+        >
+            {{#if arrowLeft}}
+                <span class="button-arrow__left"></span>
             {{/if}}
             {{#if label}}
                 <span>{{label}}</span>
             {{/if}}
-            {{#if iconAfter}}
-                <img class="button-icon" alt="icon" src={{iconAfter}} />
+            {{#if arrowRight}}
+                <span class="button-arrow__right"></span>
             {{/if}}
         </button>
     `;

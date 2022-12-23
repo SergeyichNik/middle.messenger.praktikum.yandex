@@ -5,18 +5,10 @@ import { UnderlinedInputProps } from './UnderlinedInput.types';
 export class UnderlinedInput extends Block {
   static componentName = 'UnderlinedInput';
 
-  constructor({
-    onInput,
-    onFocus,
-    onBlur,
-    type = 'text',
-    disabled = false,
-    ...props
-  }: UnderlinedInputProps) {
+  constructor({ onInput, onFocus, onBlur, type = 'text', ...props }: UnderlinedInputProps) {
     super({
       ...props,
       type,
-      disabled,
       events: {
         input: onInput,
         focus: onFocus,
@@ -28,11 +20,20 @@ export class UnderlinedInput extends Block {
   protected render(): string {
     // language=hbs
     return `
-            <input name={{name}}
-                    required
-                   type={{type}}
-                   placeholder={{placeholder}}
-            >
+        <input name={{name}}
+               required
+            {{#if value}}
+               value={{value}}
+            {{/if}}
+            {{#if disabled}}
+                {{disabled}}
+            {{/if}}
+            {{#if placeholder}}
+               placeholder={{placeholder}}
+            {{/if}}
+               type={{type}}
+
+        >
     `;
   }
 }

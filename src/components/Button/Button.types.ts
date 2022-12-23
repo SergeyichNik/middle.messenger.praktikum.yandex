@@ -1,8 +1,11 @@
 export interface ButtonProps {
-  iconBefore?: string;
-  iconAfter?: string;
+  arrowLeft?: string;
+  arrowRight?: string;
   style?: string;
   type?: string;
   label?: string;
+  dataAttribute?: string;
+  dataAttributeValue?: string;
+  name?: string;
   onClick?: () => void;
 }
