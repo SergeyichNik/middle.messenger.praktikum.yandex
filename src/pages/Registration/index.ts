@@ -3,7 +3,7 @@ import { registerComponent, renderDOM } from 'core';
 import * as components from 'components';
 import { Registration } from './Registration';
 
-Object.entries(components).forEach(([name, component]) => {
+Object.values(components).forEach(component => {
   // @ts-expect-error
   registerComponent(component);
 });
