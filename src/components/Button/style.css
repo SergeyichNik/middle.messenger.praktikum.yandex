@@ -1,0 +1,81 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 37px;
+
+  cursor: pointer;
+  transition: 0.1s all;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 14px;
+  gap: 5px;
+}
+
+.primary {
+  color: var(--white);
+  background: var(--primary);
+}
+
+.primary:active {
+  background: var(--primary-up);
+}
+
+.button-icon__left {
+  content: "";
+}
+
+.chevron-left-icon {
+  content: url("../../assets/icons/chevron-left.svg");
+}
+
+.attach-icon {
+  content: url("../../assets/icons/attach.svg");
+}
+
+.send-icon {
+  content: url("../../assets/icons/send.svg");
+}
+
+.smile-icon {
+  content: url("../../assets/icons/smile.svg");
+}
+
+.dots-icon {
+  content: url("../../assets/icons/three-dots-vertical.svg");
+}
+
+.plus-icon {
+  content: url("../../assets/icons/plus.svg");
+}
+
+.button-arrow__right {
+  content: url("../../assets/icons/chevron-right.svg");
+}
+
+.text,
+.text:active {
+  color: var(--primary);
+  background: transparent;
+}
+
+.gray_text {
+  color: var(--gray);
+}
+
+.round {
+  width: 37px;
+
+  border-radius: 100%;
+}
+
+.button-size__medium {
+  width: 280px;
+}
+
+.fill {
+  width: 100%;
+}
