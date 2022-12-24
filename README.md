@@ -18,6 +18,9 @@ https://63911f1d45f44a0009c46ef7--luxury-fudge-16f55d.netlify.app/
 
 ## Стэк используемых технологий 
 <img src="https://cdn-icons-png.flaticon.com/512/5968/5968381.png" width="48">
+<img src="https://camo.githubusercontent.com/a2ebaaedf9af41416a2717b3a28f405b39535397f4463c5c5119146c84c240f9/68747470733a2f2f706f73746373732e6f72672f6c6f676f2e737667" width="48">
+https://camo.githubusercontent.com/a2ebaaedf9af41416a2717b3a28f405b39535397f4463c5c5119146c84c240f9/68747470733a2f2f706f73746373732e6f72672f6c6f676f2e737667
+<img src="https://i0.wp.com/blog.fossasia.org/wp-content/uploads/2017/07/handlebars-js.png?fit=500%2C500&ssl=1" width="48">
 - Parcel
 - Handlebars JS
 - PostCSS
