@@ -29,7 +29,7 @@ export default class Block<P = any> {
   eventBus: () => EventBus<Events>;
 
   protected state: any = {};
-  protected refs: Record<string, Block> = {};
+  public refs: Record<string, Block> = {};
 
   public constructor(props?: P) {
     const eventBus = new EventBus<Events>();

@@ -2,6 +2,7 @@ export { AvatarPicker } from './AvatarPicker';
 export { FilledInput } from './FilledInput';
 export { PTag } from './PTag';
 export { ChatList } from './ChatList';
+export { ChatMessage } from './ChatMessage';
 export { NotificationBadge } from './NotificationBadge';
 export { ChatAvatar } from './ChatAvatar';
 export { ChatListItem } from './ChatListItem';

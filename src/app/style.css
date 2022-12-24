@@ -12,7 +12,6 @@
 
 * {
   box-sizing: border-box;
-
   font-family: "Noto Sans", sans-serif;
   scroll-behavior: smooth;
 }
@@ -20,9 +19,7 @@
 body {
   box-sizing: border-box;
   margin: 0;
-
   background-color: #efefef;
-
   font-size: 14px;
 }
 
@@ -30,16 +27,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 100vw;
   height: 100vh;
-
-  border: 1px solid;
 }
 
 .mat {
   padding: 30px;
-
   border-radius: 12px;
   background-color: var(--white);
   box-shadow: 0 0 6px var(--gray);

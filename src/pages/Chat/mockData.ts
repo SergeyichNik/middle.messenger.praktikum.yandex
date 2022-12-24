@@ -9,6 +9,42 @@ export interface ChatItemType {
   lastMessage: string;
 }
 
+export interface Message {
+  content: string;
+  time: string;
+  owner: string;
+}
+
+const date = new Date();
+
+export const mockMessages: Message[] = [
+  {
+    content: 'From mock',
+    time: `${date.getHours()}:${date.getMinutes()}`,
+    owner: 'right',
+  },
+  {
+    content: 'From mock',
+    time: `${date.getHours()}:${date.getMinutes()}`,
+    owner: 'left',
+  },
+  {
+    content: 'From mock',
+    time: `${date.getHours()}:${date.getMinutes()}`,
+    owner: 'right',
+  },
+  {
+    content: 'From mock',
+    time: `${date.getHours()}:${date.getMinutes()}`,
+    owner: 'left',
+  },
+  {
+    content: 'From mock',
+    time: `${date.getHours()}:${date.getMinutes()}`,
+    owner: 'right',
+  },
+];
+
 export const data: ChatItemType[] = [
   {
     chatName: 'Done done',

@@ -35,7 +35,6 @@ export class Profile extends Block {
         const currentKey = this.props.dataAttributeValue;
 
         Object.keys(this.state[currentKey]).forEach(key => {
-          // @ts-expect-error
           this.refs?.[`${key}InputRef`].refs?.errorRef?.setProps({
             text: '',
           });
@@ -69,7 +68,6 @@ export class Profile extends Block {
     const { error, isValid } = validateForm(rules);
 
     Object.entries(error).forEach(([key, value]) => {
-      // @ts-expect-error
       this.refs?.[`${key}InputRef`].refs.errorRef?.setProps({
         text: value,
       });

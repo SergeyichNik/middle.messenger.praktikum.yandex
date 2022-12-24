@@ -24,7 +24,6 @@ export class Registration extends Block {
         const input = e.currentTarget as HTMLInputElement;
 
         Object.keys(this.state).forEach(key => {
-          // @ts-expect-error
           this.refs?.[`${key}InputRef`].refs.errorRef?.setProps({
             text: '',
           });
@@ -45,7 +44,6 @@ export class Registration extends Block {
     const { error, isValid } = validateForm(rules);
 
     Object.entries(error).forEach(([key, value]) => {
-      // @ts-expect-error
       this.refs?.[`${key}InputRef`].refs.errorRef?.setProps({
         text: value,
       });
