@@ -17,7 +17,7 @@ https://www.figma.com/file/GlBCOegk56WmcpbRkYOTIX/Chat_external_link-(Copy)?node
 https://63911f1d45f44a0009c46ef7--luxury-fudge-16f55d.netlify.app/
 
 ## Стэк используемых технологий 
-![typescript]([https://cdn-icons-png.flaticon.com/512/5968/5968381.png](https://icons8.com/icon/nCj4PvnCO0tZ/typescript))
+</img src="https://cdn-icons-png.flaticon.com/512/5968/5968381.png" alt="ts" width="50px">
 - Parcel
 - Handlebars JS
 - PostCSS
