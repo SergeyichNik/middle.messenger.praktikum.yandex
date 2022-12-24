@@ -1,4 +1,4 @@
-> ##Описание
+## Описание
 
 - **Приложение**. Мессенджер для обмена сообщениями.
 - **Возможности**. Создание личных чатов, групповых чатов, отправка текстовых сообщений и медиа файлов.
@@ -17,6 +17,7 @@ https://www.figma.com/file/GlBCOegk56WmcpbRkYOTIX/Chat_external_link-(Copy)?node
 https://63911f1d45f44a0009c46ef7--luxury-fudge-16f55d.netlify.app/
 
 ## Стэк используемых технологий 
+![typescript](https://cdn-icons-png.flaticon.com/512/5968/5968381.png)
 - Parcel
 - Handlebars JS
 - PostCSS
