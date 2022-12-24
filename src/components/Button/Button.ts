@@ -24,13 +24,13 @@ export class Button extends Block {
                 data-{{dataAttribute}}={{dataAttributeValue}}
             {{/if}}
         >
-            {{#if arrowLeft}}
-                <span class="button-arrow__left"></span>
+            {{#if iconLeft}}
+                <span class="button-icon__left {{iconType}}"></span>
             {{/if}}
             {{#if label}}
                 <span>{{label}}</span>
             {{/if}}
-            {{#if arrowRight}}
+            {{#if iconRight}}
                 <span class="button-arrow__right"></span>
             {{/if}}
         </button>

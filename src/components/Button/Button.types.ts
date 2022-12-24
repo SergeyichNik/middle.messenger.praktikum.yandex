@@ -1,6 +1,7 @@
 export interface ButtonProps {
-  arrowLeft?: string;
-  arrowRight?: string;
+  iconLeft?: string;
+  iconType?: string;
+  iconRight?: string;
   style?: string;
   type?: string;
   label?: string;

@@ -135,7 +135,11 @@ export class Profile extends Block {
             <div class="profile">
                 <div class="profile-header">
                     <div class="back-button">
-                        {{{ Button onClick=onEndWithoutSave style="primary round" arrowLeft=true}}}
+                        {{{ Button onClick=onEndWithoutSave 
+                                   style="primary round" 
+                                   iconType="chevron-left-icon" 
+                                   iconLeft=true
+                        }}}
                     </div>
                     {{{ AvatarPicker hoverText="Сменить фото" }}}
                     <p class="profile-name">{{login}}</p>

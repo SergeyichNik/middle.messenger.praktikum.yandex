@@ -24,8 +24,32 @@
   background: var(--primary-up);
 }
 
-.button-arrow__left {
+.button-icon__left {
+  content: "";
+}
+
+.chevron-left-icon {
   content: url("../../assets/icons/chevron-left.svg");
+}
+
+.attach-icon {
+  content: url("../../assets/icons/attach.svg");
+}
+
+.send-icon {
+  content: url("../../assets/icons/send.svg");
+}
+
+.smile-icon {
+  content: url("../../assets/icons/smile.svg");
+}
+
+.dots-icon {
+  content: url("../../assets/icons/three-dots-vertical.svg");
+}
+
+.plus-icon {
+  content: url("../../assets/icons/plus.svg");
 }
 
 .button-arrow__right {

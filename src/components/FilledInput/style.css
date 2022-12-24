@@ -1,0 +1,41 @@
+.search-field {
+  position: relative;
+}
+
+.search-field input {
+  width: 100%;
+  min-width: 300px;
+  height: 37px;
+  padding: 0 30px;
+
+  color: var(--base);
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  background-color: var(--gray-light);
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.search-field input::placeholder {
+  color: var(--gray);
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.search-field__icon {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+
+  width: 21px;
+  height: 18px;
+
+  transform: translateY(-50%);
+}
+
+.round input {
+  border-radius: 22px;
+}
