@@ -47,7 +47,7 @@ export class Chat extends Block {
   onSend(): void {
     if (this.state.message.text) {
       const date = new Date();
-      console.log(this.state.message.text);
+      console.log(this.state.message);
       const getMessage = (position: 'left' | 'right', content: string): Message => {
         return {
           content,
