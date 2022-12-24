@@ -17,7 +17,7 @@ https://www.figma.com/file/GlBCOegk56WmcpbRkYOTIX/Chat_external_link-(Copy)?node
 https://63911f1d45f44a0009c46ef7--luxury-fudge-16f55d.netlify.app/
 
 ## Стэк используемых технологий 
-> Typescript
-> Parcel
-> Handlebars JS
-> PostCSS
+> - Typescript
+> - Parcel
+> - Handlebars JS
+> - PostCSS
