@@ -1,14 +1,10 @@
 {
   "extends": [
-    "stylelint-config-standard",
-    "stylelint-order-config-standard"
-  ],
-  "plugins": [
-    "stylelint-order"
+    "stylelint-config-standard"
   ],
   "ignoreFiles": [
     "dist/*",
-    "src/styles/normalize.css"
+    "src/app/normalize.css"
   ],
   "rules": {
     "selector-class-pattern": null,

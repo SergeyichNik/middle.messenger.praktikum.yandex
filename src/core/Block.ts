@@ -29,7 +29,7 @@ export default class Block<P = any> {
   eventBus: () => EventBus<Events>;
 
   protected state: any = {};
-  protected refs: Record<string, Block> = {};
+  public refs: Record<string, Block> = {};
 
   public constructor(props?: P) {
     const eventBus = new EventBus<Events>();
@@ -40,7 +40,6 @@ export default class Block<P = any> {
 
     this.getStateFromProps(props);
 
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     this.props = this._makePropsProxy(props || ({} as P));
     this.state = this._makePropsProxy(this.state);
 
@@ -153,8 +152,6 @@ export default class Block<P = any> {
       set(target: Record<string, unknown>, prop: string, value: unknown) {
         target[prop] = value;
 
-        // Запускаем обновление компоненты
-        // Плохой cloneDeep, в след итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
         return true;
       },
