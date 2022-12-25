@@ -1,12 +1,12 @@
 import Block from 'core/Block';
 import './style.css';
-import { UnderlinedInputControllerProps } from './UnderlinedInput.types';
+import { UnderlinedInputProps } from './UnderlinedInput.types';
 import { validateForm } from '../../utils/validateForm';
 
-export class UnderlinedInputController extends Block {
+export class UnderlinedInputController extends Block<UnderlinedInputProps> {
   static componentName = 'UnderlinedInputController';
 
-  constructor({ disabled, ...props }: UnderlinedInputControllerProps) {
+  constructor({ disabled, ...props }: UnderlinedInputProps) {
     super({
       ...props,
       disabled,

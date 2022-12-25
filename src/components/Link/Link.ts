@@ -1,8 +1,8 @@
 import Block from 'core/Block';
 import './style.css';
-import { LinkProps } from './Link.types';
+import { ClassLinkProps, LinkProps } from './Link.types';
 
-export class Link extends Block {
+export class Link extends Block<ClassLinkProps> {
   static componentName = 'Link';
 
   constructor({ ...props }: LinkProps) {

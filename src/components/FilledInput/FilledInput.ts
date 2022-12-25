@@ -1,8 +1,8 @@
 import Block from 'core/Block';
 import './style.css';
-import { FilledInputProps } from './FilledInput.types';
+import { ClassFilledInputProps, FilledInputProps } from './FilledInput.types';
 
-export class FilledInput extends Block {
+export class FilledInput extends Block<ClassFilledInputProps> {
   static componentName = 'FilledInput';
 
   constructor({ onInput, ...props }: FilledInputProps) {

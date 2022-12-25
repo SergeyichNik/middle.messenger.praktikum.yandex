@@ -1,8 +1,8 @@
 import Block from 'core/Block';
 import './style.css';
-import { AvatarPickerProps } from './AvatarPicker.types';
+import { AvatarPickerProps, ClassAvatarPickerProps } from './AvatarPicker.types';
 
-export class AvatarPicker extends Block {
+export class AvatarPicker extends Block<ClassAvatarPickerProps> {
   static componentName = 'AvatarPicker';
 
   constructor({ ...props }: AvatarPickerProps) {

@@ -7,3 +7,5 @@ interface ChatListData extends ChatItemType {
 export interface ChatListProps {
   data: ChatListData[];
 }
+
+export interface ClassChatListProps extends ChatListProps {}

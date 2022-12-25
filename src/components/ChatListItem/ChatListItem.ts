@@ -1,8 +1,8 @@
 import Block from 'core/Block';
 import './style.css';
-import { ChatListItemProps } from './ChatListItem.types';
+import { ChatListItemProps, ClassChatListItemProps } from './ChatListItem.types';
 
-export class ChatListItem extends Block {
+export class ChatListItem extends Block<ClassChatListItemProps> {
   static componentName = 'ChatListItem';
 
   constructor({ onSelectChat, ...props }: ChatListItemProps) {

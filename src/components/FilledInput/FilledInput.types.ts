@@ -11,3 +11,11 @@ export interface FilledInputProps {
   name?: string;
   type?: 'text' | 'email' | 'password' | 'tel';
 }
+
+export interface ClassFilledInputProps extends Omit<FilledInputProps, 'onInput onBlur onFocus'> {
+  events?: {
+    input?: () => void;
+    blur?: () => void;
+    focus?: () => void;
+  };
+}

@@ -10,3 +10,9 @@ export interface ButtonProps {
   name?: string;
   onClick?: () => void;
 }
+
+export interface ClassButtonProps extends Omit<ButtonProps, 'onClick'> {
+  events?: {
+    click?: () => void;
+  };
+}

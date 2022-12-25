@@ -1,8 +1,8 @@
 import Block from 'core/Block';
 import './style.css';
-import { ChatListProps } from './ChatList.types';
+import { ChatListProps, ClassChatListProps } from './ChatList.types';
 
-export class ChatList extends Block {
+export class ChatList extends Block<ClassChatListProps> {
   static componentName = 'ChatList';
 
   constructor({ ...props }: ChatListProps) {

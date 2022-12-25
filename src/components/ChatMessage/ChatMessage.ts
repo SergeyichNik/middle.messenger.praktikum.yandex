@@ -1,8 +1,8 @@
 import Block from 'core/Block';
 import './style.css';
-import { ChatMessageProps } from './ChatMessage.types';
+import { ChatMessageProps, ClassChatMessageProps } from './ChatMessage.types';
 
-export class ChatMessage extends Block {
+export class ChatMessage extends Block<ClassChatMessageProps> {
   static componentName = 'ChatMessage';
 
   constructor({ ...props }: ChatMessageProps) {

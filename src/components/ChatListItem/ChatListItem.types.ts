@@ -5,5 +5,11 @@ export interface ChatListItemProps {
   unreadMessageCount?: string | number;
   time?: string;
   lastMessage?: string;
-  onSelectChat: (e: MouseEvent) => void;
+  onSelectChat: (chatId: string) => void;
+}
+
+export interface ClassChatListItemProps extends Omit<ChatListItemProps, 'onSelectChat'> {
+  events: {
+    click: (chatId: string) => void;
+  };
 }
