@@ -18,7 +18,11 @@ const EMAIL_PATTERN =
 const NAME_PATTERN = /^[A-ZА-Я][A-ZА-Яa-za-я-]+$/;
 const NON_NUMERIC_PATTERN = /^\d+$/;
 const LOGIN_PATTERN = /^[a-zA-Z\d_-]+$/;
-const PASSWORD_PATTERN = /^.*[A-Z][.\d].*$/;
+const passwordPattern = (str: string): boolean => {
+  const UPPERCASE_PATTERN = /[A-Z]/g;
+  const NUM_PATTERN = /\d/g;
+  return UPPERCASE_PATTERN.test(str) && NUM_PATTERN.test(str);
+};
 
 export interface ValidateRule {
   value: string;
@@ -60,7 +64,7 @@ export const validateForm = (rules: ValidateRule[]): ReturnValidate => {
         error[type] = 'Password should contains more than 7 letters';
       } else if (value?.length > 40) {
         error[type] = 'Password should contains no more than 40 letters';
-      } else if (!PASSWORD_PATTERN.test(value)) {
+      } else if (!passwordPattern(value)) {
         error[type] = 'Password must contain at least one uppercase letter and a number';
       } else {
         error[type] = '';
