@@ -127,9 +127,9 @@ export default class Block<P = any> {
 
   getContent(): Nullable<HTMLElement> {
     // Хак, чтобы вызвать CDM только после добавления в DOM
-    if (this.element?.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+    if (this.element?.closest(`div`)?.DOCUMENT_FRAGMENT_NODE === Node.DOCUMENT_FRAGMENT_NODE) {
       setTimeout(() => {
-        if (this.element?.parentNode?.nodeType !== Node.DOCUMENT_FRAGMENT_NODE) {
+        if (this.element?.closest(`div`)?.DOCUMENT_FRAGMENT_NODE !== Node.DOCUMENT_FRAGMENT_NODE) {
           this.eventBus().emit(Block.EVENTS.FLOW_CDM);
         }
       }, 100);
