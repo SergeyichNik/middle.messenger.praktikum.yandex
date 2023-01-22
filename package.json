@@ -6,7 +6,7 @@
     "node": ">=12"
   },
   "scripts": {
-    "dev": "parcel src/app/index.html --no-cache",
+    "dev": "parcel src/index.html --no-cache",
     "build": "parcel build src/app/index.html --no-cache",
     "start": "parcel build src/app/index.html && node ./server.js",
     "lint": "eslint . --fix --ext .ts",
@@ -26,6 +26,7 @@
   "alias": {
     "components": "./src/components",
     "core": "./src/core",
+    "store": "./src/store",
     "pages": "./src/pages",
     "utils": "./src/utils",
     "assets": "./src/assets"
