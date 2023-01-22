@@ -1,8 +1,6 @@
 .p-tag {
   margin: 0;
-
   color: var(--base);
-
   font-size: 14px;
   font-weight: 600;
 }
@@ -19,4 +17,9 @@
 .p-tag__small {
   font-size: 10px;
   font-weight: 500;
+}
+
+.p-tag__large {
+  font-size: 16px;
+  font-weight: 600;
 }

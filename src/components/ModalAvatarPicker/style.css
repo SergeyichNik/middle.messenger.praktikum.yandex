@@ -1,0 +1,37 @@
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(58 57 57 / 49%);
+  position: absolute;
+  z-index: 99999;
+}
+
+.modal-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  width: 340px;
+  height: 257px;
+  border-radius: 12px;
+  z-index: 999991;
+}
+
+.modal-container__file-picker {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+  overflow: hidden;
+  justify-content: flex-start;
+  border: 1px dashed var(--gray);
+  color: var(--gray);
+  width: 200px;
+  height: 100px;
+}
+
+.file-picker__fileName {
+  color: var(--primary);
+  word-break: break-word;
+  margin-top: 5px;
+}

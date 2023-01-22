@@ -1,0 +1,29 @@
+.user-card-small {
+  display: flex;
+  column-gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  border-radius: 4px;
+  width: 175px;
+  height: 30px;
+  background-color: var(--gray-light);
+}
+
+.user-card-small button {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+}
+
+.user-card-small__avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+}
+
+.user-card-small__login {
+  width: 105px;
+  overflow: hidden;
+  text-align: left;
+}
