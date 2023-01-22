@@ -7,7 +7,6 @@ import { SignUpModel } from '../../api/authApi';
 import { signIn } from 'store/thunks';
 import { AppState } from 'store/rootStore';
 import { AuthProps, ClassAuthProps } from './Auth.types';
-import { logger } from '../../utils/logger';
 
 class AuthContainer extends Block<ClassAuthProps> {
   static componentName = 'Auth';
@@ -34,10 +33,6 @@ class AuthContainer extends Block<ClassAuthProps> {
       },
       errorMessage: '',
     });
-  }
-
-  componentDidMount(props: ClassAuthProps): void {
-    logger('did mount');
   }
 
   onSubmit(): void {
