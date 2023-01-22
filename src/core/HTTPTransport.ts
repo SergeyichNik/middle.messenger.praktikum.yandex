@@ -13,49 +13,66 @@ function queryStringify(data: ParamsDataType): string {
   }, '?');
 }
 
+const parseRes = (obj: string): Record<string, any> | string => {
+  try {
+    return JSON.parse(obj);
+  } catch (e) {
+    return obj;
+  }
+};
+
 interface RequestOptions<T> {
   method: METHODS;
   timeout: number;
-  data: Record<string, T>;
+  data: T;
   headers: Record<string, string>;
 }
 
 export default class HTTPTransport {
-  get = async <T, F>(url: string, options: RequestOptions<T>): Promise<F> => {
+  private readonly baseApi: string;
+  constructor(baseApi: string) {
+    this.baseApi = baseApi;
+  }
+
+  get = async <T, F>(url: string, options?: Partial<RequestOptions<T>>): Promise<F> => {
     let query = '';
     if (options?.data) {
       query = queryStringify(options.data);
     }
-    return await this.request<T>(`${url}${query}`, { ...options, method: 'GET' });
+
+    return await this.request<T>(`${url}${query}`, { method: 'GET' });
   };
 
-  post = async <T, F>(url: string, options: RequestOptions<T>): Promise<F> => {
-    return await this.request<T>(url, { ...options, method: 'POST' });
+  post = async <T, F>(url: string, options?: Partial<RequestOptions<T>>): Promise<F> => {
+    return await this.request(url, { ...options, method: 'POST' });
   };
 
-  put = async <T, F>(url: string, options: RequestOptions<T>): Promise<F> => {
+  put = async <T, F>(url: string, options: Partial<RequestOptions<T>>): Promise<F> => {
     return await this.request<T>(url, { ...options, method: 'PUT' });
   };
 
-  delete = async <T, F>(url: string, options: RequestOptions<T>): Promise<F> => {
+  delete = async <T, F>(url: string, options?: Partial<RequestOptions<T>>): Promise<F> => {
     return await this.request<T>(url, { ...options, method: 'DELETE' });
   };
 
-  request = async <T>(url: string, options: RequestOptions<T>): Promise<any> => {
+  private readonly request = async <T>(
+    url: string,
+    options?: Partial<RequestOptions<T>>,
+  ): Promise<any> => {
     const defaultOpt: RequestOptions<{}> = {
       method: 'GET',
       timeout: 5000,
       data: {},
       headers: {
-        'Content-Type': 'application/json; charset=utf-8',
+        accept: 'application/json',
       },
     };
     const { method, data, timeout, headers } = { ...defaultOpt, ...options };
     return await new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
 
-      xhr.open(method, url);
-
+      xhr.open(method, `${this.baseApi}${url}`);
+      xhr.withCredentials = true;
       Object.entries(headers).forEach(header => {
         const name = header[0];
         const value = header[1];
@@ -64,7 +81,18 @@ export default class HTTPTransport {
       });
 
       xhr.onload = function () {
-        resolve(xhr);
+        if (xhr.status >= 200 && xhr.status < 300) {
+          resolve({
+            data: parseRes(xhr.response),
+            status: xhr.status,
+          });
+        } else {
+          // eslint-disable-next-line prefer-promise-reject-errors
+          reject({
+            data: parseRes(xhr.response),
+            status: xhr.status,
+          });
+        }
       };
       xhr.timeout = timeout;
       xhr.onabort = reject;
@@ -73,7 +101,10 @@ export default class HTTPTransport {
 
       if (method === 'GET' || !data) {
         xhr.send();
+      } else if (data.constructor.name === 'FormData') {
+        xhr.send(data as FormData);
       } else {
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
         xhr.send(JSON.stringify(data));
       }
     });

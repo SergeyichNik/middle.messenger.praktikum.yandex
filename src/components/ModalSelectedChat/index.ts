@@ -1,0 +1,1 @@
+export { ModalSelectedChat } from './ModalSelectedChat';

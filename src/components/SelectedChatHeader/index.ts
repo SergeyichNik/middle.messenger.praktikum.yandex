@@ -1,0 +1,1 @@
+export { SelectedChatHeader } from './SelectedChatHeader';

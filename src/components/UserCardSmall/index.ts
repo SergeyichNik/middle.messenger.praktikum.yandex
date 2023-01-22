@@ -1,0 +1,1 @@
+export { UserCardSmall } from './UserCardSmall';

@@ -1,8 +1,8 @@
 import Block from 'core/Block';
 import './style.css';
-import { NotificationBadgeProps } from './NotificationBadge.types';
+import { ClassNotificationBadgeProps, NotificationBadgeProps } from './NotificationBadge.types';
 
-export class NotificationBadge extends Block {
+export class NotificationBadge extends Block<ClassNotificationBadgeProps> {
   static componentName = 'NotificationBadge';
 
   constructor({ ...props }: NotificationBadgeProps) {

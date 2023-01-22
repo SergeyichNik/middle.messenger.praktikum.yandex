@@ -1,9 +1,15 @@
 export interface ChatListItemProps {
-  chatId: string;
-  chatName?: string;
-  chatImage?: string;
+  id: number;
+  title: string;
+  avatar?: string;
   unreadMessageCount?: string | number;
   time?: string;
   lastMessage?: string;
-  onSelectChat: (e: MouseEvent) => void;
+  selectChat: (id: number) => void;
+}
+
+export interface ClassChatListItemProps extends ChatListItemProps {
+  events: {
+    click: (id: number) => void;
+  };
 }

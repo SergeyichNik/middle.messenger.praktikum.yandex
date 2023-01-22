@@ -1,8 +1,8 @@
 import Block from 'core/Block';
 import './style.css';
-import { ButtonProps } from './Button.types';
+import { ButtonProps, ClassButtonProps } from './Button.types';
 
-export class Button extends Block {
+export class Button extends Block<ClassButtonProps> {
   static componentName = 'Button';
 
   constructor({ onClick, type = 'button', ...props }: ButtonProps) {

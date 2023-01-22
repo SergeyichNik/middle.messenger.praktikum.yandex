@@ -1,3 +1,5 @@
+import { ValidateRuleType } from '../../utils/validateForm';
+
 export interface UnderlinedInputProps {
   label?: string;
   disabled?: string;
@@ -5,21 +7,22 @@ export interface UnderlinedInputProps {
   error?: string;
   placeholder?: string;
   onInput?: () => void;
-  onBlur?: () => void;
+  onBlur?: (e: FocusEvent) => void;
   onFocus?: () => void;
   value?: string;
-  name?: string;
+  name: ValidateRuleType;
   type?: 'text' | 'email' | 'password' | 'tel';
 }
 
-export interface UnderlinedInputControllerProps {
-  label?: string;
-  disabled?: string;
-  innerRef?: string;
-  placeholder?: string;
-  onInput?: () => void;
-  onFocus?: () => void;
-  value?: string;
-  name?: string;
-  type?: 'text' | 'email' | 'password' | 'tel';
+export interface ClassUnderlinedInputProps
+  extends Omit<UnderlinedInputProps, 'onInput' | 'onBlur' | 'onFocus'> {
+  events?: {
+    input?: () => void;
+    focus?: () => void;
+    blur?: (e: FocusEvent) => void;
+  };
+}
+
+export interface ErrorInstanceProps {
+  text: string;
 }

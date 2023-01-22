@@ -1,9 +1,6 @@
 import Block from 'core/Block';
 import './style.css';
-
-interface ErrorInstanceProps {
-  text: string;
-}
+import { ErrorInstanceProps } from './UnderlinedInput.types';
 
 export class UnderlinedInputError extends Block<ErrorInstanceProps> {
   static componentName = 'UnderlinedInputError';

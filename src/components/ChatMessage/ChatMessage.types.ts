@@ -4,3 +4,5 @@ export interface ChatMessageProps {
   avatar?: string;
   position?: string;
 }
+
+export interface ClassChatMessageProps extends ChatMessageProps {}

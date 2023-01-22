@@ -2,7 +2,7 @@ import Block from 'core/Block';
 import './style.css';
 import { PTagProps } from './PTag.types';
 
-export class PTag extends Block {
+export class PTag extends Block<PTagProps> {
   static componentName = 'PTag';
 
   constructor({ ...props }: PTagProps) {

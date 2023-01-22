@@ -1,8 +1,8 @@
 import Block from 'core/Block';
 import './style.css';
-import { UnderlinedInputProps } from './UnderlinedInput.types';
+import { ClassUnderlinedInputProps, UnderlinedInputProps } from './UnderlinedInput.types';
 
-export class UnderlinedInput extends Block {
+export class UnderlinedInput extends Block<ClassUnderlinedInputProps> {
   static componentName = 'UnderlinedInput';
 
   constructor({ onInput, onFocus, onBlur, type = 'text', ...props }: UnderlinedInputProps) {

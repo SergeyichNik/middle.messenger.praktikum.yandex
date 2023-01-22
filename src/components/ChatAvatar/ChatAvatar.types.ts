@@ -3,3 +3,5 @@ export interface ChatAvatarProps {
   id?: string;
   src?: string;
 }
+
+export interface ClassChatAvatarProps extends ChatAvatarProps {}

@@ -1,12 +1,21 @@
 import Block from 'core/Block';
 import './style.css';
-import { LinkProps } from './Link.types';
+import { ClassLinkProps, LinkProps } from './Link.types';
+import { router } from '../../core/Router';
 
-export class Link extends Block {
+export class Link extends Block<ClassLinkProps> {
   static componentName = 'Link';
 
   constructor({ ...props }: LinkProps) {
-    super({ ...props });
+    super({
+      ...props,
+      events: {
+        click: (e: MouseEvent) => {
+          e.preventDefault();
+          router.navigate(props.linkTo);
+        },
+      },
+    });
   }
 
   protected render(): string {

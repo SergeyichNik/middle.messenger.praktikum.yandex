@@ -2,7 +2,7 @@ import Block from 'core/Block';
 import './style.css';
 import { PageTitleProps } from './PageTitle.types';
 
-export class PageTitle extends Block {
+export class PageTitle extends Block<PageTitleProps> {
   static componentName = 'PageTitle';
 
   constructor({ ...props }: PageTitleProps) {

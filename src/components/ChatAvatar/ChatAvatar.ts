@@ -1,8 +1,8 @@
 import Block from 'core/Block';
 import './style.css';
-import { ChatAvatarProps } from './ChatAvatar.types';
+import { ChatAvatarProps, ClassChatAvatarProps } from './ChatAvatar.types';
 
-export class ChatAvatar extends Block {
+export class ChatAvatar extends Block<ClassChatAvatarProps> {
   static componentName = 'ChatAvatar';
 
   constructor({ ...props }: ChatAvatarProps) {
