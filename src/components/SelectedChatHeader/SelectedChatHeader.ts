@@ -3,6 +3,7 @@ import './style.css';
 import { ClassSelectedChatHeaderProps, SelectedChatHeaderProps } from './SelectedChatHeader.types';
 import { connect, MapDispatchToProps, MapStateToProps } from '../../lib/utils/connect';
 import { AppState } from '../../store/rootStore';
+import { BASE_API } from '../../api/config';
 
 export class SelectedChatHeaderContainer extends Block<Partial<ClassSelectedChatHeaderProps>> {
   static componentName = 'SelectedChatHeader';
@@ -37,13 +38,14 @@ export class SelectedChatHeaderContainer extends Block<Partial<ClassSelectedChat
           month: '2-digit',
         })
       : 'недавно';
+    const chatAvatar = this.props.avatar ? `${BASE_API}resources/${this.props.avatar}` : '';
     // language=hbs
     return `
         <div class="selected-chat-header">
             {{#if isSettingsMode}}
                 {{{ ModalSelectedChat onCloseModal=disableSettingsMode title=title id=id}}}
             {{/if}}
-            {{{ ChatAvatar style="chat-avatar-medium" }}}
+            {{{ ChatAvatar style="chat-avatar-medium" src="${chatAvatar}" }}}
             <div class="selected-chat__info">
                 {{{ PTag value=title }}}
                 {{{ PTag style="p-tag__medium p-tag__gray"
