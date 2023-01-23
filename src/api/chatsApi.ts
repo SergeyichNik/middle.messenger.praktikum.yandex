@@ -48,4 +48,7 @@ export const chatsApi = {
   getUsersChat: async (id: number) => {
     return await api.get<number, ResponseType<UserModel[]>>(`chats/${id}/users`);
   },
+  getChatToken: async (id: number) => {
+    return await api.post<undefined, ResponseType<{ token: string }>>(`chats/token/${id}`);
+  },
 };
