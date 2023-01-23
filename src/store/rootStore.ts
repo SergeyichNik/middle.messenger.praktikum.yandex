@@ -40,6 +40,7 @@ export interface AppState {
   user: UserModel;
   chats: ChatModel[];
   selectedChat: Nullable<ChatModel>;
+  activeChatToken: Nullable<string>;
   selectedChatUsers: UserModel[];
   header: {
     isSettingsMode: boolean;
@@ -63,6 +64,7 @@ const initialState: AppState = {
   usersToAdd: [],
   selectedChat: null,
   selectedChatUsers: [],
+  activeChatToken: null,
 };
 export const store = createStore<AppState>(initialState);
 
