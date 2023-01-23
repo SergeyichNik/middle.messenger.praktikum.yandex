@@ -72,12 +72,14 @@ class ActiveChatAreaContainer extends Block<Partial<ClassActiveChatAreaProps>> {
   }
 
   onSend = (): void => {
-    this.props.ws?.send(
-      JSON.stringify({
-        content: this.state.content,
-        type: 'message',
-      }),
-    );
+    if (this.state.content) {
+      this.props.ws?.send(
+        JSON.stringify({
+          content: this.state.content,
+          type: 'message',
+        }),
+      );
+    }
   };
 
   onInput(e: InputEvent): void {
@@ -98,7 +100,7 @@ class ActiveChatAreaContainer extends Block<Partial<ClassActiveChatAreaProps>> {
                     {{{ChatMessage  content=this.content time=this.time ownerId=this.user_id}}}
                 {{/each}}
             </div>
-
+          
             <div class="message-create-area">
                 {{{ Button type="button" style="text round" iconLeft=true iconType= "attach-icon"}}}
                 {{{ Button type="button" style="text round" iconLeft=true iconType= "smile-icon"}}}
