@@ -29,6 +29,14 @@ export class SelectedChatHeaderContainer extends Block<Partial<ClassSelectedChat
   };
 
   protected render(): string {
+    const lastVisitTime = this.props.time
+      ? new Date(this.props.time).toLocaleString('default', {
+          hour: '2-digit',
+          minute: '2-digit',
+          day: '2-digit',
+          month: '2-digit',
+        })
+      : 'недавно';
     // language=hbs
     return `
         <div class="selected-chat-header">
@@ -39,7 +47,13 @@ export class SelectedChatHeaderContainer extends Block<Partial<ClassSelectedChat
             <div class="selected-chat__info">
                 {{{ PTag value=title }}}
                 {{{ PTag style="p-tag__medium p-tag__gray"
-                         value="Был(а) ${this.props.time ? String(this.props.time) : 'недавно'}"
+                         value="Был(а) ${lastVisitTime}"
+                }}}
+                {{{ PTag 
+                        value="${
+                          this.props.isConnected ? 'Соединение установлено' : 'Соединение...'
+                        }" 
+                        style="p-tag__medium p-tag__gray"
                 }}}
             </div>
             {{{ Button iconLeft=true onClick=enableSettingsMode iconType="dots-icon"}}}

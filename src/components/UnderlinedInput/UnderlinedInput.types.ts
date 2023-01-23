@@ -1,4 +1,4 @@
-import { ValidateRuleType } from '../../utils/validateForm';
+import { ValidateRuleType } from '../../lib/utils/validateForm';
 
 export interface UnderlinedInputProps {
   label?: string;

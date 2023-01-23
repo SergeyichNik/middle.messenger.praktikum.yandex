@@ -18,13 +18,20 @@ class ChatListItemContainer extends Block<ClassChatListItemProps> {
   }
 
   protected render(): string {
+    const lastMessageTime = this.props.lastMessage?.time
+      ? new Date(this.props.lastMessage?.time).toLocaleString('default', {
+          day: '2-digit',
+          month: '2-digit',
+        })
+      : '';
+    const lastMessageText = this.props.lastMessage?.content || '';
     // language=hbs
     return `
         <div class="chat-list-item" >
             {{{ ChatAvatar id="chat-list-chatImage" }}}
             {{{ PTag id="chat-list-chatName" value=title}}}
-            {{{ PTag id="chat-list-time" value=time style="p-tag__small p-tag__gray"}}}
-            {{{ PTag id="chat-list-lastMessage" value=lastMessage style="p-tag__medium p-tag__gray"}}}
+            {{{ PTag id="chat-list-time" value="${lastMessageTime}" style="p-tag__small p-tag__gray"}}}
+            {{{ PTag id="chat-list-lastMessage" value="${lastMessageText}" style="p-tag__medium p-tag__gray"}}}
             {{#if unreadMessageCount}}
                 {{{ NotificationBadge id="chat-list-badge" value=unreadMessageCount}}}
             {{/if}}

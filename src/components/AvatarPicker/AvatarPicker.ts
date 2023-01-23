@@ -1,8 +1,7 @@
 import Block from 'core/Block';
 import './style.css';
 import { AvatarPickerProps, ClassAvatarPickerProps } from './AvatarPicker.types';
-
-const apiResources = 'https://ya-praktikum.tech/api/v2/resources';
+import { apiResources } from '../../lib/config/constants';
 
 export class AvatarPicker extends Block<ClassAvatarPickerProps> {
   static componentName = 'AvatarPicker';

@@ -1,6 +1,6 @@
 import Block from 'core/Block';
 import './style.css';
-import { validateForm, ValidateRule } from '../../utils/validateForm';
+import { validateForm, ValidateRule } from '../../lib/utils/validateForm';
 import { connect, MapDispatchToProps, MapStateToProps } from '../../lib/utils/connect';
 import { withRouter } from '../../lib/utils/withRouter';
 import { SignUpModel } from '../../api/authApi';

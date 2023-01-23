@@ -1,10 +1,12 @@
+import { MessageModel } from '../../store/rootStore';
+
 export interface ChatListItemProps {
   id: number;
   title: string;
   avatar?: string;
   unreadMessageCount?: string | number;
   time?: string;
-  lastMessage?: string;
+  lastMessage?: MessageModel;
   selectChat: (id: number) => void;
 }
 

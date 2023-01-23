@@ -1,6 +1,5 @@
 import Block from 'core/Block';
 import './style.css';
-import { validateForm, ValidateRule } from 'utils/validateForm';
 import { ClassProfileProps, ProfilePath, ProfileProps } from './Profile.types';
 import { connect, MapDispatchToProps, MapStateToProps } from '../../lib/utils/connect';
 import { AppState, UserPassword } from '../../store/rootStore';
@@ -10,6 +9,7 @@ import { router } from '../../core/Router';
 import { Routes } from '../../router/initRouter';
 
 import { UserProfileInfo } from '../../api/userApi';
+import { validateForm, ValidateRule } from '../../lib/utils/validateForm';
 
 export class ProfileContainer extends Block<Partial<ClassProfileProps>> {
   static componentName = 'Profile';

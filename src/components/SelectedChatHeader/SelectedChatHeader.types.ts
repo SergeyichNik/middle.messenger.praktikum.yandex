@@ -4,6 +4,7 @@ export interface SelectedChatHeaderProps {
   isSettingsMode: boolean;
   enableSettingsMode: () => void;
   disableSettingsMode: () => void;
+  isConnected: boolean;
 }
 
 export interface ClassSelectedChatHeaderProps extends SelectedChatHeaderProps {}
