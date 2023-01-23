@@ -8,6 +8,7 @@ export { ModalAvatarPicker } from './ModalAvatarPicker';
 export { SelectedChatHeader } from './SelectedChatHeader';
 export { ModalCreateChat } from './ModalCreateChat';
 export { ModalSelectedChat } from './ModalSelectedChat';
+export { ActiveChatArea } from './ActiveChatArea';
 export { ChatAvatar } from './ChatAvatar';
 export { ChatListItem } from './ChatListItem';
 export { UsersSearchItem } from './UsersSearchItem';

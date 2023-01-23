@@ -85,23 +85,8 @@ class ChatContainer extends Block {
             <div class="right-part">
                 {{#if selectedChat}}
                     
-                    {{{ SelectedChatHeader }}}
-                    
-                    <div class="message-display-area">
-                        {{#each mockMessages}}
-                            {{{ChatMessage content=this.content time=this.time position=this.owner}}}
-                        {{/each}}
-                    </div>
-
-                    <div class="message-create-area">
-                        {{{ Button type="button" style="text round" iconLeft=true iconType= "attach-icon"}}}
-                        {{{ Button type="button" style="text round" iconLeft=true iconType= "smile-icon"}}}
-                        <div class="message-create-area__input">
-                            {{{ FilledInput onInput=onInput name="message" placeholder='Cообшение...' style="round" }}}
-                        </div>
-                        {{{ Button onClick=onSend type="button" style="primary round" iconLeft=true
-                                   iconType= "send-icon"}}}
-                    </div>
+                    {{{ ActiveChatArea }}}
+                  
                 {{else}}
 
                     {{{ PTag value="Выберите чат чтобы отправить сообщение" style="p-tag__medium p-tag__gray" }}}

@@ -127,7 +127,9 @@ export default class Block<P = any> {
 
   getContent(): Nullable<HTMLElement> {
     if (this.element?.closest(`div`)?.DOCUMENT_FRAGMENT_NODE === Node.DOCUMENT_FRAGMENT_NODE) {
-      this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+      setTimeout(() => {
+        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+      });
     }
 
     return this.element;

@@ -1,12 +1,11 @@
 import Block from 'core/Block';
 import './style.css';
-import { validateForm, ValidateRule } from '../../utils/validateForm';
+import { validateForm, ValidateRule } from '../../lib/utils/validateForm';
 import { connect, MapStateToProps } from '../../lib/utils/connect';
 import { Dispatch } from '../../core/Store';
 import { AppState } from '../../store/rootStore';
 import { SignUpModel } from '../../api/authApi';
 import { signUp } from '../../store/thunks';
-import { logger } from '../../utils/logger';
 
 export class RegistrationContainer extends Block {
   static componentName = 'Registration';
@@ -61,7 +60,6 @@ export class RegistrationContainer extends Block {
   }
 
   protected render(): string {
-    logger('registration', 'white', 'blue', this.props);
     // language=hbs
     return `
         <div class="container">

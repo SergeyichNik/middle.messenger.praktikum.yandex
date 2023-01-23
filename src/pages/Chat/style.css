@@ -11,28 +11,3 @@
   height: 100vh;
   padding-bottom: 20px;
 }
-
-.message-create-area {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: auto;
-  padding: 20px 20px 0;
-  border-top: 1px solid var(--gray);
-  gap: 10px;
-}
-
-.message-display-area {
-  padding: 0 15px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column-reverse;
-  width: 100%;
-  height: calc(100vh - 180px);
-}
-
-.message-create-area__input {
-  width: 100%;
-}
