@@ -3,8 +3,9 @@ import './style.css';
 import { ActiveChatAreaProps, ClassActiveChatAreaProps, WsMessage } from './ActiveChatArea.types';
 import { connect, MapStateToProps } from '../../lib/utils/connect';
 import { AppState } from '../../store/rootStore';
-
-const wsApi = 'wss://ya-praktikum.tech/ws/chats/';
+import { stringTry } from '../../lib/utils/stringTry';
+import { parseTry } from '../../lib/utils/parseTry';
+import { WS_API } from '../../api/config';
 
 class ActiveChatAreaContainer extends Block<Partial<ClassActiveChatAreaProps>> {
   static componentName = 'ActiveChatArea';
@@ -35,14 +36,16 @@ class ActiveChatAreaContainer extends Block<Partial<ClassActiveChatAreaProps>> {
         userId,
         selectedChat: { id },
       } = this.props;
-      const webSocket = new WebSocket(`${wsApi}/${userId}/${id}/${activeChatToken}`);
+      const webSocket = new WebSocket(`${WS_API}/${userId}/${id}/${activeChatToken}`);
       webSocket.onopen = () => {
-        webSocket.send(
-          JSON.stringify({
-            content: '0',
-            type: 'get old',
-          }),
-        );
+        const initialMessage = stringTry({
+          content: '0',
+          type: 'get old',
+        });
+        if (initialMessage) {
+          webSocket.send(initialMessage);
+        }
+
         this.setProps({
           isConnected: true,
           ws: webSocket,
@@ -50,8 +53,10 @@ class ActiveChatAreaContainer extends Block<Partial<ClassActiveChatAreaProps>> {
       };
 
       webSocket.onmessage = event => {
-        const data = JSON.parse(event.data);
+        const data = parseTry(event.data);
+
         const oldMessages = this.props.messages as WsMessage[];
+
         if (Array.isArray(data)) {
           this.setProps({
             messages: [...oldMessages, ...data],
@@ -72,13 +77,16 @@ class ActiveChatAreaContainer extends Block<Partial<ClassActiveChatAreaProps>> {
   }
 
   onSend = (): void => {
-    if (this.state.content) {
-      this.props.ws?.send(
-        JSON.stringify({
-          content: this.state.content,
-          type: 'message',
-        }),
-      );
+    const message = stringTry({
+      content: this.state.content,
+      type: 'message',
+    });
+
+    if (this.state.content && message) {
+      this.props.ws?.send(message);
+      this.setState({
+        content: '',
+      });
     }
   };
 
