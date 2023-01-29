@@ -1,6 +1,10 @@
 export interface LinkProps {
-  href: string;
+  linkTo: string;
   text: string;
 }
 
-export interface ClassLinkProps extends LinkProps {}
+export interface ClassLinkProps extends LinkProps {
+  events: {
+    click: (e: MouseEvent) => void;
+  };
+}

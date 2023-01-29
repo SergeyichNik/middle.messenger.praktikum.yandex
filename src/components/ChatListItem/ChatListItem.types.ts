@@ -1,15 +1,17 @@
+import { MessageModel } from '../../store/rootStore';
+
 export interface ChatListItemProps {
-  chatId: string;
-  chatName?: string;
-  chatImage?: string;
+  id: number;
+  title: string;
+  avatar?: string;
   unreadMessageCount?: string | number;
   time?: string;
-  lastMessage?: string;
-  onSelectChat: (chatId: string) => void;
+  lastMessage?: MessageModel;
+  selectChat: (id: number) => void;
 }
 
-export interface ClassChatListItemProps extends Omit<ChatListItemProps, 'onSelectChat'> {
+export interface ClassChatListItemProps extends ChatListItemProps {
   events: {
-    click: (chatId: string) => void;
+    click: (id: number) => void;
   };
 }

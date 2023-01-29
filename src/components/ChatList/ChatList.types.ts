@@ -1,11 +1,9 @@
-import { ChatItemType } from '../../pages/Chat/mockData';
-
-interface ChatListData extends ChatItemType {
-  onSelectChat: (e: MouseEvent) => void;
-}
+import { ChatModel } from '../../store/rootStore';
 
 export interface ChatListProps {
-  data: ChatListData[];
+  data: ChatModel[];
+  goToProfile: () => void;
+  onOpenCreateChatModal: () => void;
 }
 
 export interface ClassChatListProps extends ChatListProps {}

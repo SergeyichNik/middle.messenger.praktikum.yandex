@@ -1,21 +1,29 @@
 import Block from 'core/Block';
 import './style.css';
-import { validateForm, ValidateRule } from 'utils/validateForm';
-import { defaultPassword, defaultUser } from './constants';
+import { ClassProfileProps, ProfilePath, ProfileProps } from './Profile.types';
+import { connect, MapDispatchToProps, MapStateToProps } from '../../lib/utils/connect';
+import { AppState, UserPassword } from '../../store/rootStore';
+import { withRouter } from '../../lib/utils/withRouter';
+import { logout, passwordChangesSave, profileChangesSave, userAvatarChange } from 'store/thunks';
+import { router } from '../../core/Router';
+import { Routes } from '../../router/initRouter';
 
-export class Profile extends Block {
+import { UserProfileInfo } from '../../api/userApi';
+import { validateForm, ValidateRule } from '../../lib/utils/validateForm';
+
+export class ProfileContainer extends Block<Partial<ClassProfileProps>> {
   static componentName = 'Profile';
 
-  constructor() {
-    super();
+  constructor(props: Partial<ProfileProps>) {
+    super(props);
     this.state = {
       user: {
-        email: '',
-        login: '',
-        display_name: '',
-        first_name: '',
-        second_name: '',
-        phone: '',
+        email: this.props.user?.email,
+        login: this.props.user?.login,
+        display_name: this.props.user?.display_name,
+        first_name: this.props.user?.first_name,
+        second_name: this.props.user?.second_name,
+        phone: this.props.user?.phone,
       },
       password: {
         oldPassword: '',
@@ -24,31 +32,31 @@ export class Profile extends Block {
       },
     };
     this.setProps({
-      ...defaultUser,
-      ...defaultPassword,
-      dataAttributeValue: '',
-      editProfileMode: 'disabled',
+      dataAttributeValue: this.props.route?.path,
+      editProfileMode: this.props.route?.path === 'user' ? '' : 'disabled',
       onSubmit: this.onSubmit.bind(this),
-
       onInput: (e: InputEvent) => {
         const input = e.currentTarget as HTMLInputElement;
         const currentKey = this.props.dataAttributeValue;
-
-        Object.keys(this.state[currentKey]).forEach(key => {
-          this.refs?.[`${key}InputRef`].refs?.errorRef?.setProps({
-            text: '',
+        if (currentKey) {
+          Object.keys(this.state[currentKey]).forEach(key => {
+            this.refs?.[`${key}InputRef`].refs?.errorRef?.setProps({
+              text: '',
+            });
           });
-        });
-        this.setState({
-          [currentKey]: {
-            ...this.state[currentKey],
-            [input.name]: input.value,
-          },
-        });
+          this.setState({
+            [currentKey]: {
+              ...this.state[currentKey],
+              [input.name]: input.value,
+            },
+          });
+        }
       },
-      onFocus: () => null,
-      editPasswordMode: false,
-      editMode: false,
+      editAvatarMode: false,
+      editPasswordMode: this.props.route?.path === 'password',
+      disableAvatarEditMode: this.disableAvatarEditMode.bind(this),
+      enableAvatarEditMode: this.enableAvatarEditMode.bind(this),
+      editMode: !!this.props.route?.path,
       onSetEditProfileMode: this.onSetEditProfileMode.bind(this),
       onSetEditPasswordMode: this.onSetEditPasswordMode.bind(this),
       onEndWithoutSave: this.onEndWithoutSave.bind(this),
@@ -56,15 +64,16 @@ export class Profile extends Block {
     });
   }
 
-  onSubmit(currentKey: string): void {
-    const rules = Object.entries(this.state[currentKey]).map(
+  onSubmit(currentKey: ProfilePath): void {
+    const data = this.state[currentKey];
+
+    const rules = Object.entries(data).map(
       ([key, value]) =>
         ({
           type: key,
           value,
         } as ValidateRule),
     );
-
     const { error, isValid } = validateForm(rules);
 
     Object.entries(error).forEach(([key, value]) => {
@@ -74,40 +83,48 @@ export class Profile extends Block {
     });
 
     if (isValid) {
-      console.log('Submitted!', this.state[currentKey]);
-      this.setProps({
-        editProfileMode: 'disabled',
-        editPasswordMode: false,
-        editMode: false,
-      });
+      if (currentKey === 'user') {
+        if (this.props?.profileChangesSave) {
+          this.props?.profileChangesSave({
+            display_name: data.display_name,
+            email: data.email,
+            first_name: data.first_name,
+            login: data.login,
+            phone: data.phone,
+            second_name: data.second_name,
+          });
+        }
+      }
+      if (currentKey === 'password') {
+        if (this.props.passwordChangesSave) {
+          this.props.passwordChangesSave({
+            oldPassword: data.oldPassword,
+            newPassword: data.newPassword,
+          });
+        }
+      }
     }
   }
 
   onSetEditProfileMode(): void {
-    this.setState({
-      user: {
-        ...defaultUser,
-      },
-    });
-    this.setProps({
-      dataAttributeValue: 'user',
-      editProfileMode: '',
-      editMode: true,
-    });
+    router.navigate(Routes.PROFILE_EDIT_USER_INFO);
   }
 
   onSetEditPasswordMode(): void {
-    this.setState({
-      password: {
-        ...defaultPassword,
-      },
-    });
-    this.setProps({
-      dataAttributeValue: 'password',
-      editPasswordMode: true,
-      editMode: true,
-    });
+    router.navigate(Routes.PROFILE_CHANGE_USER_PASSWORD);
   }
+
+  enableAvatarEditMode = (): void => {
+    this.setProps({
+      editAvatarMode: true,
+    });
+  };
+
+  disableAvatarEditMode = (): void => {
+    this.setProps({
+      editAvatarMode: false,
+    });
+  };
 
   onSaveChanges(e: MouseEvent): void {
     const target = e.currentTarget as HTMLButtonElement;
@@ -115,31 +132,36 @@ export class Profile extends Block {
     if (!target.dataset.submit) {
       return;
     }
-    this.onSubmit(target.dataset.submit);
+    this.onSubmit(target.dataset.submit as ProfilePath);
   }
 
   onEndWithoutSave(): void {
-    this.setProps({
-      editProfileMode: 'disabled',
-      editPasswordMode: false,
-      editMode: false,
-    });
+    if (this.props.route?.path) {
+      router.navigate(Routes.PROFILE);
+    } else {
+      router.navigate(Routes.CHAT);
+    }
   }
 
   protected render(): string {
     // language=hbs
     return `
         <div class="container">
+            {{#if editAvatarMode}}
+               
+                {{{ ModalAvatarPicker onCloseModal=disableAvatarEditMode avatarChange=userAvatarChange }}}
+
+            {{/if}}
             <div class="profile">
                 <div class="profile-header">
                     <div class="back-button">
-                        {{{ Button onClick=onEndWithoutSave 
-                                   style="primary round" 
-                                   iconType="chevron-left-icon" 
+                        {{{ Button onClick=onEndWithoutSave
+                                   style="primary round"
+                                   iconType="chevron-left-icon"
                                    iconLeft=true
                         }}}
                     </div>
-                    {{{ AvatarPicker hoverText="Сменить фото" }}}
+                    {{{ AvatarPicker onClick=enableAvatarEditMode src=user.avatar hoverText="Сменить фото" }}}
                     <p class="profile-name">{{login}}</p>
                 </div>
                 <div class="profile-user-info-form">
@@ -170,7 +192,7 @@ export class Profile extends Block {
                                                       onFocus=onFocus
                         }}}
                     {{else}}
-                        {{{ UnderlinedInputController value=email
+                        {{{ UnderlinedInputController value=user.email
                                                       disabled=editProfileMode
                                                       label="Почта"
                                                       type="text"
@@ -180,7 +202,7 @@ export class Profile extends Block {
                                                       onInput=onInput
                                                       onFocus=onFocus
                         }}}
-                        {{{ UnderlinedInputController value=login
+                        {{{ UnderlinedInputController value=user.login
                                                       disabled=editProfileMode
                                                       label="Логин"
                                                       type="text"
@@ -190,7 +212,7 @@ export class Profile extends Block {
                                                       onInput=onInput
                                                       onFocus=onFocus
                         }}}
-                        {{{ UnderlinedInputController value=login
+                        {{{ UnderlinedInputController value=user.display_name
                                                       disabled=editProfileMode
                                                       label="Имя в чате"
                                                       type="text"
@@ -200,7 +222,7 @@ export class Profile extends Block {
                                                       onInput=onInput
                                                       onFocus=onFocus
                         }}}
-                        {{{ UnderlinedInputController value=first_name
+                        {{{ UnderlinedInputController value=user.first_name
                                                       disabled=editProfileMode
                                                       label="Имя"
                                                       type="text"
@@ -210,7 +232,7 @@ export class Profile extends Block {
                                                       onInput=onInput
                                                       onFocus=onFocus
                         }}}
-                        {{{ UnderlinedInputController value=second_name
+                        {{{ UnderlinedInputController value=user.second_name
                                                       disabled=editProfileMode
                                                       label="Фамилия"
                                                       type="text"
@@ -220,7 +242,7 @@ export class Profile extends Block {
                                                       onInput=onInput
                                                       onFocus=onFocus
                         }}}
-                        {{{ UnderlinedInputController value=phone
+                        {{{ UnderlinedInputController value=user.phone
                                                       disabled=editProfileMode
                                                       label="Телефон"
                                                       type="text"
@@ -252,7 +274,7 @@ export class Profile extends Block {
                                    label="Изменить пароль"
                                    style="text"
                         }}}
-                        {{{ Button label="Выйти" style="text"}}}
+                        {{{ Button label="Выйти" onClick=logout style="text"}}}
                     </div>
                 {{/if}}
 
@@ -261,3 +283,22 @@ export class Profile extends Block {
     `;
   }
 }
+
+const mapStateToProps: MapStateToProps<AppState> = state => {
+  return {
+    user: state.user,
+    status: state.status,
+  };
+};
+
+const mapDispatchToProps: MapDispatchToProps<AppState> = dispatch => {
+  return {
+    logout: () => dispatch(logout()),
+    profileChangesSave: (model: UserProfileInfo) => dispatch(profileChangesSave(model)),
+    passwordChangesSave: (model: UserPassword) => dispatch(passwordChangesSave(model)),
+    userAvatarChange: (data: FormData, cb: () => void) => dispatch(userAvatarChange(data, cb)),
+  };
+};
+
+// @ts-expect-error
+export const Profile = connect(withRouter(ProfileContainer), mapStateToProps, mapDispatchToProps);

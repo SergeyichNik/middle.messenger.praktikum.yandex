@@ -1,0 +1,1 @@
+export { UsersSearchItem } from './UsersSearchItem';

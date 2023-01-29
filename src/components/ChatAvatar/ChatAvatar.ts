@@ -1,7 +1,6 @@
 import Block from 'core/Block';
 import './style.css';
 import { ChatAvatarProps, ClassChatAvatarProps } from './ChatAvatar.types';
-
 export class ChatAvatar extends Block<ClassChatAvatarProps> {
   static componentName = 'ChatAvatar';
 
@@ -13,7 +12,7 @@ export class ChatAvatar extends Block<ClassChatAvatarProps> {
     // language=hbs
     return `
         <div class="avatar-container {{style}}" id={{id}}>
-            <img src="#" class="avatar-image {{style}}" alt="avatar">
+            <img src={{src}} class="avatar-image {{style}}" alt="avatar">
         </div>
     `;
   }

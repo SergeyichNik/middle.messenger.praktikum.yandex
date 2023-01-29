@@ -1,7 +1,8 @@
 import Block from 'core/Block';
 import './style.css';
+import { withRouter } from '../../lib/utils/withRouter';
 
-export class NotFound extends Block {
+class NotFoundContainer extends Block {
   static componentName = 'NotFound';
 
   protected render(): string {
@@ -17,3 +18,5 @@ export class NotFound extends Block {
     `;
   }
 }
+
+export const NotFound = withRouter(NotFoundContainer);

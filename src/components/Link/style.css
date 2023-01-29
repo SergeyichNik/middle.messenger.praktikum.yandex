@@ -1,8 +1,6 @@
 .link {
   text-decoration: none;
-
   color: var(--primary);
-
   font-size: 12px;
   font-weight: 500;
 }

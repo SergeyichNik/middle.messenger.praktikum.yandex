@@ -1,12 +1,17 @@
 import Block from 'core/Block';
 import './style.css';
-import { validateForm, ValidateRule } from '../../utils/validateForm';
+import { validateForm, ValidateRule } from '../../lib/utils/validateForm';
+import { connect, MapStateToProps } from '../../lib/utils/connect';
+import { Dispatch } from '../../core/Store';
+import { AppState } from '../../store/rootStore';
+import { SignUpModel } from '../../api/authApi';
+import { signUp } from '../../store/thunks';
 
-export class Registration extends Block {
+export class RegistrationContainer extends Block {
   static componentName = 'Registration';
 
-  constructor() {
-    super();
+  constructor(props: any) {
+    super(props);
     this.state = {
       email: '',
       login: '',
@@ -50,7 +55,7 @@ export class Registration extends Block {
     });
 
     if (isValid) {
-      console.log(this.state);
+      this.props.signUp(this.state);
     }
   }
 
@@ -61,72 +66,84 @@ export class Registration extends Block {
             <div class="registration-page">
                 <form class="registration-page__top">
                     {{{ PageTitle title="Регистрация"}}}
-                    {{{ UnderlinedInputController onInput=onInput 
-                                                  onFocus=onFocus 
-                                                  innerRef="errorRef" 
-                                                  ref="emailInputRef" 
-                                                  name="email" 
-                                                  label="Почта" 
+                    {{{ UnderlinedInputController onInput=onInput
+                                                  onFocus=onFocus
+                                                  innerRef="errorRef"
+                                                  ref="emailInputRef"
+                                                  name="email"
+                                                  label="Почта"
                                                   type="text"
                     }}}
-                    {{{ UnderlinedInputController onInput=onInput 
-                                                  onFocus=onFocus 
-                                                  innerRef="errorRef" 
-                                                  ref="loginInputRef" 
-                                                  name="login" 
-                                                  label="Логин" 
+                    {{{ UnderlinedInputController onInput=onInput
+                                                  onFocus=onFocus
+                                                  innerRef="errorRef"
+                                                  ref="loginInputRef"
+                                                  name="login"
+                                                  label="Логин"
                                                   type="text"
                     }}}
-                    {{{ UnderlinedInputController onInput=onInput 
-                                                  onFocus=onFocus 
-                                                  innerRef="errorRef" 
-                                                  ref="first_nameInputRef" 
-                                                  name="first_name" 
-                                                  label="Имя" 
+                    {{{ UnderlinedInputController onInput=onInput
+                                                  onFocus=onFocus
+                                                  innerRef="errorRef"
+                                                  ref="first_nameInputRef"
+                                                  name="first_name"
+                                                  label="Имя"
                                                   type="text"
                     }}}
-                    {{{ UnderlinedInputController onInput=onInput 
-                                                  onFocus=onFocus 
-                                                  innerRef="errorRef" 
-                                                  ref="second_nameInputRef" 
-                                                  name="second_name" 
-                                                  label="Фамилия" 
+                    {{{ UnderlinedInputController onInput=onInput
+                                                  onFocus=onFocus
+                                                  innerRef="errorRef"
+                                                  ref="second_nameInputRef"
+                                                  name="second_name"
+                                                  label="Фамилия"
                                                   type="text"
                     }}}
-                    {{{ UnderlinedInputController onInput=onInput 
-                                                  onFocus=onFocus 
-                                                  innerRef="errorRef" 
-                                                  ref="phoneInputRef" 
-                                                  name="phone" 
-                                                  label="Телефон" 
+                    {{{ UnderlinedInputController onInput=onInput
+                                                  onFocus=onFocus
+                                                  innerRef="errorRef"
+                                                  ref="phoneInputRef"
+                                                  name="phone"
+                                                  label="Телефон"
                                                   type="tel"
                     }}}
-                    {{{ UnderlinedInputController onInput=onInput 
-                                                  onFocus=onFocus 
-                                                  innerRef="errorRef" 
-                                                  ref="passwordInputRef" 
-                                                  name="password" 
-                                                  label="Пароль" 
+                    {{{ UnderlinedInputController onInput=onInput
+                                                  onFocus=onFocus
+                                                  innerRef="errorRef"
+                                                  ref="passwordInputRef"
+                                                  name="password"
+                                                  label="Пароль"
                                                   type="password"
                     }}}
-                    {{{ UnderlinedInputController onInput=onInput 
-                                                  onFocus=onFocus 
-                                                  innerRef="errorRef" 
+                    {{{ UnderlinedInputController onInput=onInput
+                                                  onFocus=onFocus
+                                                  innerRef="errorRef"
                                                   ref="password_confirmInputRef"
-                                                  name="password_confirm" 
-                                                  label="Подтердить пароль" 
+                                                  name="password_confirm"
+                                                  label="Подтердить пароль"
                                                   type="password"}}}
                 </form>
                 <div class="registration-page__bottom">
-                    {{{ Button style="primary fill" 
+                    {{{ Button style="primary fill"
                                label="Зарегестрироваться"
                                onClick=onSubmit
                                type="submit"
                     }}}
-                    {{{ Link text="Войти" href="#"}}}
+                    {{{ Link text="Войти" linkTo="/"}}}
                 </div>
             </div>
         </div>
     `;
   }
 }
+
+const mapDispatchToProps = (dispatch: Dispatch<AppState>): any => {
+  return {
+    signUp: (model: SignUpModel) => dispatch(signUp(model)),
+  };
+};
+
+const mapStateToProps: MapStateToProps<AppState> = state => {
+  return {};
+};
+
+export const Registration = connect(RegistrationContainer, mapStateToProps, mapDispatchToProps);

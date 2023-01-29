@@ -2,14 +2,10 @@
   min-width: 20px;
   height: 20px;
   padding: 0 5px;
-
   text-align: center;
-
   color: var(--white);
   border-radius: 10px;
   background-color: var(--primary);
-
   font-size: 12px;
-
   line-height: 20px;
 }

@@ -1,7 +1,7 @@
 import Block from 'core/Block';
 import './style.css';
 import { UnderlinedInputProps } from './UnderlinedInput.types';
-import { validateForm } from '../../utils/validateForm';
+import { validateForm } from '../../lib/utils/validateForm';
 
 export class UnderlinedInputController extends Block<UnderlinedInputProps> {
   static componentName = 'UnderlinedInputController';
