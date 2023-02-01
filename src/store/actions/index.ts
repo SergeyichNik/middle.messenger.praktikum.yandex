@@ -1,1 +1,1 @@
-export { setUser, setStatus, setError, ErrorThunk } from './actions';
+export { setUser, setStatus, setError } from './actions';

@@ -3,6 +3,7 @@ import './style.css';
 import { ChatMessageProps, ClassChatMessageProps } from './ChatMessage.types';
 import { connect, MapStateToProps } from '../../lib/utils/connect';
 import { AppState } from '../../store/rootStore';
+import { BASE_API } from '../../api/config';
 
 class ChatMessageContainer extends Block<ClassChatMessageProps> {
   static componentName = 'ChatMessage';
@@ -18,7 +19,9 @@ class ChatMessageContainer extends Block<ClassChatMessageProps> {
       hour: '2-digit',
       minute: '2-digit',
     });
+
     const messageOwner = selectedChatUsers.find(({ id }) => id === ownerId);
+    const avatar = messageOwner?.avatar ? `${BASE_API}resources/${messageOwner.avatar}` : '';
     const messagePosition: 'left' | 'right' = ownerId === currentUserId ? 'right' : 'left';
     const color = String(ownerId).slice(0, 4);
 
@@ -34,9 +37,7 @@ class ChatMessageContainer extends Block<ClassChatMessageProps> {
                     <p class="message-body__cloud-time">${messageTime}</p>
                 </div>
                 <div class="message-${messagePosition}-body__avatar">
-                    {{{ ChatAvatar src="${
-                      messageOwner?.avatar as string
-                    }" style="chat-avatar-small"}}}
+                    {{{ ChatAvatar src="${avatar}" style="chat-avatar-small"}}}
                 </div>
             </div>
         </div>

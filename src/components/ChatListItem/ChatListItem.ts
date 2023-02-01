@@ -4,6 +4,7 @@ import { ChatListItemProps, ClassChatListItemProps } from './ChatListItem.types'
 import { connect, MapDispatchToProps } from '../../lib/utils/connect';
 import { AppState } from '../../store/rootStore';
 import { selectChat } from 'store/actions/actions';
+import { BASE_API } from '../../api/config';
 
 class ChatListItemContainer extends Block<ClassChatListItemProps> {
   static componentName = 'ChatListItem';
@@ -25,10 +26,11 @@ class ChatListItemContainer extends Block<ClassChatListItemProps> {
         })
       : '';
     const lastMessageText = this.props.lastMessage?.content || '';
+    const chatAvatar = this.props.avatar ? `${BASE_API}resources/${this.props.avatar}` : '';
     // language=hbs
     return `
         <div class="chat-list-item" >
-            {{{ ChatAvatar id="chat-list-chatImage" }}}
+            {{{ ChatAvatar id="chat-list-chatImage" src="${chatAvatar}"}}}
             {{{ PTag id="chat-list-chatName" value=title}}}
             {{{ PTag id="chat-list-time" value="${lastMessageTime}" style="p-tag__small p-tag__gray"}}}
             {{{ PTag id="chat-list-lastMessage" value="${lastMessageText}" style="p-tag__medium p-tag__gray"}}}
