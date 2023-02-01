@@ -1,5 +1,5 @@
 import { registerComponent } from 'core';
-
+import './style.css';
 import * as components from 'components';
 
 import { BlockConstructable } from './core/registerComponent';
@@ -12,9 +12,11 @@ Object.values(components).forEach(component => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  store.on('updated', (prevState, nextState) => {
-    // console.log('%cstore updated', 'background: #222; color: #bada55', nextState);
-  });
+  // if (process.env.NODE_ENV === 'development') {
+  //   store.on('updated', (prevState, nextState) => {
+  //     console.log('%cstore updated', 'background: #222; color: #bada55', nextState);
+  //   });
+  // }
 
   initRouter(router, store);
 });
