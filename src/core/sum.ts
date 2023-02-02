@@ -3,5 +3,5 @@ export const sum = (a: number, b: number): number => {
     throw new Error('arguments required');
   }
 
-  return a + b;
+  return a - b;
 };
