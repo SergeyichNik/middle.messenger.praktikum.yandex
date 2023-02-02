@@ -8,13 +8,13 @@ export interface ErrorThunk {
   status: number;
 }
 
-export const setStatus = (status: AppStatus) => {
+export const setStatus = (status: AppStatus): Record<string, string> => {
   return {
     status,
   } as const;
 };
 
-export const setError = (error: ErrorThunk) => {
+export const setError = (error: ErrorThunk): Record<string, any> => {
   return {
     status: 'error',
     error: error.data,
@@ -22,11 +22,11 @@ export const setError = (error: ErrorThunk) => {
   } as const;
 };
 
-export const setUser = (model: UserModel) => {
+export const setUser = (model: UserModel): Record<string, any> => {
   return { user: model };
 };
 
-export const setChats = (model: ChatModel[]) => {
+export const setChats = (model: ChatModel[]): Record<string, any> => {
   return { chats: model };
 };
 
