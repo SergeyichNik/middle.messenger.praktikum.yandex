@@ -8,7 +8,7 @@ RUN  npm run build
 FROM node:18-alpine3.15
 WORKDIR /dist
 ADD package.json ./
-RUN npm install --only=prod
+RUN npm install
 COPY --from=build /dist ./
 
 EXPOSE 3000
