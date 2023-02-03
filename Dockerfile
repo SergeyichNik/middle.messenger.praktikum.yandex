@@ -11,6 +11,6 @@ ADD package.json ./
 RUN npm set-script prepare '' && npm install --omit=dev
 COPY --from=build /dist ./
 
-EXPOSE 80
+EXPOSE 3000
 
 CMD ["node", "serevr.js"]
