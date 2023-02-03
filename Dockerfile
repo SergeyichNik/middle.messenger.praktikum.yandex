@@ -13,3 +13,4 @@ COPY --from=build /dist ./
 
 EXPOSE 80
 
+CMD ['node', 'serevr.js']
