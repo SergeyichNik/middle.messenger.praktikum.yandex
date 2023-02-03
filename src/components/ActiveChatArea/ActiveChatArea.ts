@@ -102,7 +102,6 @@ class ActiveChatAreaContainer extends Block<Partial<ClassActiveChatAreaProps>> {
     return `
         <div class="active-chat-area">
             {{{ SelectedChatHeader isConnected=isConnected }}}
-
             <div class="message-display-area">
                 {{#each messages}}
                     {{{ChatMessage  content=this.content time=this.time ownerId=this.user_id}}}

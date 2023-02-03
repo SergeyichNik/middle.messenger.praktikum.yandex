@@ -11,7 +11,7 @@ import { Routes } from '../../router/initRouter';
 import { UserProfileInfo } from '../../api/userApi';
 import { validateForm, ValidateRule } from '../../lib/utils/validateForm';
 
-export class ProfileContainer extends Block<Partial<ClassProfileProps>> {
+class ProfileContainer extends Block<Partial<ClassProfileProps>> {
   static componentName = 'Profile';
 
   constructor(props: Partial<ProfileProps>) {

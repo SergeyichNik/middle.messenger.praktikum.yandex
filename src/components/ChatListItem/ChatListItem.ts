@@ -1,7 +1,7 @@
 import Block from 'core/Block';
 import './style.css';
 import { ChatListItemProps, ClassChatListItemProps } from './ChatListItem.types';
-import { connect, MapDispatchToProps } from '../../lib/utils/connect';
+import { connect, MapDispatchToProps, MapStateToProps } from '../../lib/utils/connect';
 import { AppState } from '../../store/rootStore';
 import { selectChat } from 'store/actions/actions';
 import { BASE_API } from '../../api/config';
@@ -13,9 +13,17 @@ class ChatListItemContainer extends Block<ClassChatListItemProps> {
     super({
       ...props,
       events: {
-        click: () => props.selectChat(this.props.id),
+        click: () => {
+          if (this.props.selectedChatId !== this.props.id) {
+            props.selectChat(this.props.id);
+          }
+        },
       },
     });
+  }
+
+  componentDidUpdate(oldProps: ClassChatListItemProps, newProps: ClassChatListItemProps): boolean {
+    return false;
   }
 
   protected render(): string {
@@ -49,4 +57,11 @@ const mapDispatchToProps: MapDispatchToProps<AppState> = dispatch => {
 };
 
 // @ts-expect-error
-export const ChatListItem = connect(ChatListItemContainer, () => {}, mapDispatchToProps);
+const mapStateToProps: MapStateToProps<AppState> = state => {
+  return {
+    selectedChatId: state.selectedChat?.id,
+  };
+};
+
+// @ts-expect-error
+export const ChatListItem = connect(ChatListItemContainer, mapStateToProps, mapDispatchToProps);

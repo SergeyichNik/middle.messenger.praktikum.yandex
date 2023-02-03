@@ -4,7 +4,7 @@ import { ClassUsersSearchItemProps, UsersSearchItemProps } from './UsersSearchIt
 import { connect, MapDispatchToProps } from '../../lib/utils/connect';
 import { addUsersToChat } from '../../store/thunks/addUsersToChat';
 
-export class UsersSearchItemContainer extends Block<ClassUsersSearchItemProps> {
+class UsersSearchItemContainer extends Block<ClassUsersSearchItemProps> {
   static componentName = 'UsersSearchItem';
 
   constructor({ ...props }: UsersSearchItemProps) {
