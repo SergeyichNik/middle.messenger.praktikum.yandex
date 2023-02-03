@@ -5,7 +5,7 @@ import { connect, MapDispatchToProps, MapStateToProps } from '../../lib/utils/co
 import { AppState } from '../../store/rootStore';
 import { BASE_API } from '../../api/config';
 
-export class SelectedChatHeaderContainer extends Block<Partial<ClassSelectedChatHeaderProps>> {
+class SelectedChatHeaderContainer extends Block<Partial<ClassSelectedChatHeaderProps>> {
   static componentName = 'SelectedChatHeader';
 
   constructor({ ...props }: SelectedChatHeaderProps) {
@@ -74,7 +74,7 @@ const mapStateToProps: MapStateToProps<AppState> = state => {
   };
 };
 
-const mapDispatchToProps: MapDispatchToProps = dispatch => {
+const mapDispatchToProps: MapDispatchToProps = () => {
   return {};
 };
 

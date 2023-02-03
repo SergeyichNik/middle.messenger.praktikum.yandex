@@ -8,6 +8,7 @@ export interface ChatListItemProps {
   time?: string;
   lastMessage?: MessageModel;
   selectChat: (id: number) => void;
+  selectedChatId: number;
 }
 
 export interface ClassChatListItemProps extends ChatListItemProps {

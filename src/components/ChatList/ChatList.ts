@@ -11,7 +11,6 @@ export class ChatList extends Block<ClassChatListProps> {
     super({ ...props });
 
     this.setProps({
-      ...props,
       goToProfile: this.goToProfile.bind(this),
     });
   }

@@ -7,7 +7,7 @@ import { AppState } from '../../store/rootStore';
 import { SignUpModel } from '../../api/authApi';
 import { signUp } from '../../store/thunks';
 
-export class RegistrationContainer extends Block {
+class RegistrationContainer extends Block {
   static componentName = 'Registration';
 
   constructor(props: any) {
@@ -142,7 +142,7 @@ const mapDispatchToProps = (dispatch: Dispatch<AppState>): any => {
   };
 };
 
-const mapStateToProps: MapStateToProps<AppState> = state => {
+const mapStateToProps: MapStateToProps<AppState> = () => {
   return {};
 };
 
