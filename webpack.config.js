@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 
@@ -15,12 +15,11 @@ module.exports = {
   mode,
   devtool,
   target,
-  entry: ['@babel/polyfill', './src/index.ts'],
+  entry: './src/index.ts',
   output: {
     publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
-    assetModuleFilename: 'assets/icons/[contenthash].svg',
   },
   devServer: {
     compress: true,
@@ -41,11 +40,14 @@ module.exports = {
     },
     extensions: ['.ts', '.js', '.json'],
   },
+  optimization: {
+    minimizer: [new CssMinimizerPlugin()],
+  },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyPlugin({
-      patterns: [{ from: 'src/assets/img', to: 'assets/img' }],
-    }),
+    // new CopyPlugin({
+    //   patterns: [{ from: 'src/assets/img', to: 'assets/img' }],
+    // }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
@@ -58,17 +60,9 @@ module.exports = {
     rules: [
       {
         test: /\.ts?$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-typescript', '@babel/preset-env'],
-            },
-          },
-        ],
-        exclude: /(node_modules|bover_components)/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
-
       {
         test: /\.css$/i,
         use: [
