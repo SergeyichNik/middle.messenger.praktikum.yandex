@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { ClassModalSelectedChatProps, ModalSelectedChatProps } from './ModalSelectedChat.types';
 import { connect, MapDispatchToProps, MapStateToProps } from '../../lib/utils/connect';

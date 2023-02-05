@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { ClassUserCardSmallProps, UserCardSmallProps } from './UserCardSmall.types';
 import { connect, MapDispatchToProps, MapStateToProps } from '../../lib/utils/connect';

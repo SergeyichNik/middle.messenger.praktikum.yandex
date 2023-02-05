@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { ActiveChatAreaProps, ClassActiveChatAreaProps, WsMessage } from './ActiveChatArea.types';
 import { connect, MapStateToProps } from '../../lib/utils/connect';

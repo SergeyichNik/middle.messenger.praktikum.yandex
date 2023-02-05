@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { PageTitleProps } from './PageTitle.types';
 
