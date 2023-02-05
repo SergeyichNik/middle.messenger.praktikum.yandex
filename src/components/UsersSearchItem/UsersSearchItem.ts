@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { ClassUsersSearchItemProps, UsersSearchItemProps } from './UsersSearchItem.types';
 import { connect, MapDispatchToProps } from '../../lib/utils/connect';

@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { ChatListProps, ClassChatListProps } from './ChatList.types';
 import { router } from '../../core/Router';

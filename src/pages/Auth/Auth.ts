@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { validateForm, ValidateRule } from '../../lib/utils/validateForm';
 import { connect, MapDispatchToProps, MapStateToProps } from '../../lib/utils/connect';

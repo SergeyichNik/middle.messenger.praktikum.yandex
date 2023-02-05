@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { ChatAvatarProps, ClassChatAvatarProps } from './ChatAvatar.types';
 export class ChatAvatar extends Block<ClassChatAvatarProps> {

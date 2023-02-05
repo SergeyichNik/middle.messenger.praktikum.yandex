@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { ErrorInstanceProps } from './UnderlinedInput.types';
 
