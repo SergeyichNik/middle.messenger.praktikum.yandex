@@ -21,9 +21,10 @@
   >   - ```/settings/password``` - страница установки нового пароля 
   
 
->![Screnshot](./screenshots/chat-add-example.png)
->![Screnshot](./screenshots/chat-settings-example.png)
-  
+---
+![Добавление нового чата](./screenshots/chat-add-example.png)
+![Добавление нового пользователя в чат](./screenshots/chat-settings-example.png)
+---  
 ## Установка
 
 - ```npm run dev``` — запуск версии для разработчика,
@@ -34,7 +35,7 @@
 https://www.figma.com/file/GlBCOegk56WmcpbRkYOTIX/Chat_external_link-(Copy)?node-id=0%3A1&t=wxDwHouc2xSItVZ7-3
 
 ## Ссылка на опубликованную версию
-https://deploy-preview-9--luxury-fudge-16f55d.netlify.app
+https://ya-messenger.onrender.com
 
 ## Стэк используемых технологий 
 > - Typescript
