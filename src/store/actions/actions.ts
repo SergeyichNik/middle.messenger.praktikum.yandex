@@ -7,13 +7,13 @@ export interface ErrorThunk {
   status: number;
 }
 
-export const setStatus = (status: AppStatus): Record<string, string> => {
+export const setStatus = (status: AppStatus): Partial<AppState> => {
   return {
     status,
   } as const;
 };
 
-export const setError = (error: ErrorThunk): Record<string, any> => {
+export const setError = (error: ErrorThunk): Partial<AppState> => {
   return {
     status: 'error',
     error: error.data,
@@ -21,17 +21,17 @@ export const setError = (error: ErrorThunk): Record<string, any> => {
   } as const;
 };
 
-export const setUser = (model: UserModel): Record<string, any> => {
+export const setUser = (model: UserModel): Partial<AppState> => {
   return { user: model };
 };
 
-export const toggleIsLoading = (isLoading: boolean): Record<string, boolean> => {
+export const toggleIsLoading = (isLoading: boolean): Partial<AppState> => {
   return {
     isLoading,
   };
 };
 
-export const setChats = (model: ChatModel[]): Record<string, any> => {
+export const setChats = (model: ChatModel[]): Partial<AppState> => {
   return { chats: model };
 };
 
