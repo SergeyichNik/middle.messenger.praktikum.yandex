@@ -24,4 +24,28 @@ describe('Store', () => {
     expect(mockFn).toHaveBeenCalledTimes(1);
     expect(mockFn).toHaveBeenCalledWith(oldMockState, newMockState);
   });
+
+  test('should return state', () => {
+    const mockState = { userId: 123 };
+    const store = createStore(mockState);
+
+    expect(store.getState()).toEqual(mockState);
+  });
+
+  test('dispatch should call function', () => {
+    const mockFn = jest.fn();
+    const mockState = { userId: 123 };
+    const store = createStore(mockState);
+    store.dispatch(mockFn);
+    expect(mockFn).toHaveBeenCalled();
+  });
+
+  test('dispatch should set new state', () => {
+    const oldMockState = { userId: 333 };
+    const newMockState = { userId: 666 };
+    const store = createStore(oldMockState);
+    store.dispatch(newMockState);
+
+    expect(store.getState()).toEqual(newMockState);
+  });
 });

@@ -37,4 +37,12 @@ describe('Button', () => {
 
     expect(button).toBeDisabled();
   });
+
+  test('should have attribute type with value submit', async () => {
+    renderBlock(Button, { label: 'test', type: 'submit' });
+
+    const button = getByRole(document.body, 'button');
+
+    expect(button).toHaveAttribute('type', 'submit');
+  });
 });
