@@ -21,7 +21,7 @@ const parseRes = (obj: string): Record<string, any> | string => {
   }
 };
 
-interface RequestOptions<T> {
+export interface RequestOptions<T> {
   method: METHODS;
   timeout: number;
   data: T;
@@ -55,10 +55,7 @@ export default class HTTPTransport {
     return await this.request<T>(url, { ...options, method: 'DELETE' });
   };
 
-  private readonly request = async <T>(
-    url: string,
-    options?: Partial<RequestOptions<T>>,
-  ): Promise<any> => {
+  request = async <T>(url: string, options?: Partial<RequestOptions<T>>): Promise<any> => {
     const defaultOpt: RequestOptions<{}> = {
       method: 'GET',
       timeout: 5000,
