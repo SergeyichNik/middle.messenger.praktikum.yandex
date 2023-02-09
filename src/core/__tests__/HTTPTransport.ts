@@ -11,7 +11,7 @@ describe('HTTPTransport', () => {
     const DEFAULT_OPTIONS: Partial<RequestOptions<{}>> = { method: 'GET' };
     const spyOn = jest.spyOn(rest, 'request');
 
-    void rest.get(REQUEST_URL);
+    void rest.get(REQUEST_URL).catch();
     expect(spyOn).toHaveBeenCalledWith(REQUEST_URL, DEFAULT_OPTIONS);
   });
 
@@ -23,7 +23,7 @@ describe('HTTPTransport', () => {
     const REQUEST_URL_WITH_QUERY = 'test?chat=fake&ya=make';
     const DEFAULT_OPTIONS: Partial<RequestOptions<{}>> = { method: 'GET' };
 
-    void rest.get(REQUEST_URL, { data: REQUEST_DATA });
+    void rest.get(REQUEST_URL, { data: REQUEST_DATA }).catch();
     expect(spyOn).toHaveBeenCalledWith(REQUEST_URL_WITH_QUERY, DEFAULT_OPTIONS);
   });
 
@@ -33,7 +33,7 @@ describe('HTTPTransport', () => {
     const DEFAULT_OPTIONS: Partial<RequestOptions<{}>> = { method: 'POST' };
     const spyOn = jest.spyOn(rest, 'request');
 
-    void rest.post(REQUEST_URL, FAKE_DATA);
+    void rest.post(REQUEST_URL, FAKE_DATA).catch();
     expect(spyOn).toHaveBeenCalledWith(REQUEST_URL, { ...FAKE_DATA, ...DEFAULT_OPTIONS });
   });
 
@@ -43,7 +43,7 @@ describe('HTTPTransport', () => {
     const DEFAULT_OPTIONS: Partial<RequestOptions<{}>> = { method: 'PUT' };
     const spyOn = jest.spyOn(rest, 'request');
 
-    void rest.put(REQUEST_URL, FAKE_DATA);
+    void rest.put(REQUEST_URL, FAKE_DATA).catch();
     expect(spyOn).toHaveBeenCalledWith(REQUEST_URL, { ...FAKE_DATA, ...DEFAULT_OPTIONS });
   });
 
@@ -53,7 +53,7 @@ describe('HTTPTransport', () => {
     const DEFAULT_OPTIONS: Partial<RequestOptions<{}>> = { method: 'DELETE' };
     const spyOn = jest.spyOn(rest, 'request');
 
-    void rest.delete(REQUEST_URL, FAKE_DATA);
+    void rest.delete(REQUEST_URL, FAKE_DATA).catch();
     expect(spyOn).toHaveBeenCalledWith(REQUEST_URL, { ...FAKE_DATA, ...DEFAULT_OPTIONS });
   });
 });
