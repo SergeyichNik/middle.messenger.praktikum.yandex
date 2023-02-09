@@ -12,11 +12,5 @@ Object.values(components).forEach(component => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // if (process.env.NODE_ENV === 'development') {
-  //   store.on('updated', (prevState, nextState) => {
-  //     console.log('%cstore updated', 'background: #222; color: #bada55', nextState);
-  //   });
-  // }
-
   initRouter(router, store);
 });
