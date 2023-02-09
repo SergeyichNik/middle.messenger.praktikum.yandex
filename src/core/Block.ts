@@ -198,6 +198,7 @@ export class Block<P = any> {
      * Рендерим шаблон
      */
     const template = Handlebars.compile(this.render());
+
     fragment.innerHTML = template({
       ...this.state,
       ...this.props,
