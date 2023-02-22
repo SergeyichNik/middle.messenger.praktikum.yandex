@@ -40,6 +40,7 @@ export interface AppState {
   user: UserModel;
   chats: ChatModel[];
   selectedChat: Nullable<ChatModel>;
+  isLoading: boolean;
   activeChatToken: Nullable<string>;
   selectedChatUsers: UserModel[];
   header: {
@@ -57,6 +58,7 @@ const initialState: AppState = {
   user: {} as UserModel,
   chats: [] as ChatModel[],
   status: 'idle',
+  isLoading: false,
   header: {
     isSettingsMode: false,
   },

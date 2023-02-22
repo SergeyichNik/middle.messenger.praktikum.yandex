@@ -9,7 +9,7 @@ interface BlockMeta<P = any> {
 
 type Events = Values<typeof Block.EVENTS>;
 
-export default class Block<P = any> {
+export class Block<P = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -23,7 +23,7 @@ export default class Block<P = any> {
   private readonly _meta: BlockMeta;
 
   protected _element: Nullable<HTMLElement> = null;
-  protected readonly props: P;
+  protected props: Readonly<P>;
   protected children: Record<string, Block> = {};
 
   eventBus: () => EventBus<Events>;
@@ -40,7 +40,7 @@ export default class Block<P = any> {
 
     this.getStateFromProps(props);
 
-    this.props = this._makePropsProxy(props || ({} as P));
+    this.props = props || ({} as P);
     this.state = this._makePropsProxy(this.state);
 
     this.eventBus = () => eventBus;
@@ -62,7 +62,7 @@ export default class Block<P = any> {
   }
 
   protected getStateFromProps(props: any): void {
-    this.state = {};
+    this.state = { ...props };
   }
 
   init(): void {
@@ -88,13 +88,17 @@ export default class Block<P = any> {
     return true;
   }
 
-  setProps = (nextProps: P): void => {
-    if (!nextProps) {
+  setProps = (nextPartialProps: Partial<P>): void => {
+    if (!nextPartialProps) {
       return;
     }
 
-    // @ts-expect-error
-    Object.assign(this.props, nextProps);
+    const prevProps = this.props;
+    const nextProps = { ...prevProps, ...nextPartialProps };
+
+    this.props = nextProps;
+
+    this.eventBus().emit(Block.EVENTS.FLOW_CDU, prevProps, nextProps);
   };
 
   setState = (nextState: any): void => {
@@ -150,6 +154,7 @@ export default class Block<P = any> {
         target[prop] = value;
 
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+
         return true;
       },
       deleteProperty() {
@@ -193,6 +198,7 @@ export default class Block<P = any> {
      * Рендерим шаблон
      */
     const template = Handlebars.compile(this.render());
+
     fragment.innerHTML = template({
       ...this.state,
       ...this.props,

@@ -5,13 +5,14 @@ export interface ButtonProps {
   style?: string;
   type?: string;
   label?: string;
+  disabled?: boolean;
   dataAttribute?: string;
   dataAttributeValue?: string;
   name?: string;
   onClick?: () => void;
 }
 
-export interface ClassButtonProps extends Omit<ButtonProps, 'onClick'> {
+export interface ClassButtonProps extends ButtonProps {
   events?: {
     click?: () => void;
   };

@@ -1,10 +1,10 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { ClassUsersSearchItemProps, UsersSearchItemProps } from './UsersSearchItem.types';
 import { connect, MapDispatchToProps } from '../../lib/utils/connect';
 import { addUsersToChat } from '../../store/thunks/addUsersToChat';
 
-export class UsersSearchItemContainer extends Block<ClassUsersSearchItemProps> {
+class UsersSearchItemContainer extends Block<ClassUsersSearchItemProps> {
   static componentName = 'UsersSearchItem';
 
   constructor({ ...props }: UsersSearchItemProps) {

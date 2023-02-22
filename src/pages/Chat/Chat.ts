@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { withRouter } from '../../lib/utils/withRouter';
 import { connect, MapDispatchToProps, MapStateToProps } from '../../lib/utils/connect';
@@ -10,16 +10,9 @@ class ChatContainer extends Block {
 
   constructor(props: any) {
     super({ ...props });
-    this.state = {
-      message: {
-        text: '',
-      },
-    };
     this.setProps({
       onCloseCreateChatModal: this.onCloseCreateChatModal.bind(this),
       onOpenCreateChatModal: this.onOpenCreateChatModal.bind(this),
-      onInput: this.onInput.bind(this),
-      onSend: this.onSend.bind(this),
       createChatMode: '',
     });
   }
@@ -36,62 +29,30 @@ class ChatContainer extends Block {
     });
   };
 
-  onInput(e: InputEvent): void {
-    const target = e.target as HTMLInputElement;
-
-    this.setState({
-      message: {
-        text: target.value,
-      },
-    });
-  }
-
-  onSend(): void {
-    // if (this.state.message.text) {
-    //   const date = new Date();
-    //   console.log(this.state.message);
-    //   // const getMessage = (position: 'left' | 'right', content: string): Message => {
-    //   //   return {
-    //   //     content,
-    //   //     time: `${date.getHours()}:${date.getMinutes()}`,
-    //   //     owner: position,
-    //   //   };
-    //   // };
-    //
-    //   this.setProps({
-    //     mockMessages: [getMessage('right', this.state.message.text), ...this.props.mockMessages],
-    //   });
-    //   this.setState({
-    //     message: {
-    //       text: '',
-    //     },
-    //   });
-    //   setTimeout(() => {
-    //     this.setProps({
-    //       mockMessages: [getMessage('left', 'Привет!'), ...this.props.mockMessages],
-    //     });
-    //   }, 1000);
-    // }
-  }
-
   protected render(): string {
     // language=hbs
     return `
         <div class="chat-main-container">
+          
             {{#if createChatMode}}
                 {{{ ModalCreateChat createChat=createChat closeModal=onCloseCreateChatModal }}}
             {{/if}}
             {{{ ChatList onOpenCreateChatModal=onOpenCreateChatModal data=chats}}}
             <div class="right-part">
+              {{#if isLoading}}
+                <span>Loading...</span>
+              {{else}}
                 {{#if selectedChat}}
-                    
-                    {{{ ActiveChatArea }}}
-                  
+
+                  {{{ ActiveChatArea }}}
+
                 {{else}}
 
-                    {{{ PTag value="Выберите чат чтобы отправить сообщение" style="p-tag__medium p-tag__gray" }}}
+                  {{{ PTag value="Выберите чат чтобы отправить сообщение" style="p-tag__medium p-tag__gray" }}}
 
                 {{/if}}
+              {{/if}}
+                
             </div>
         </div>
     `;
@@ -100,8 +61,7 @@ class ChatContainer extends Block {
 
 const mapStateToProps: MapStateToProps<AppState> = state => {
   return {
-    user: state.user,
-    status: state.status,
+    isLoading: state.isLoading,
     chats: state.chats,
     selectedChat: state.selectedChat,
   };

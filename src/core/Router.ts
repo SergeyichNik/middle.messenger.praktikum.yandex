@@ -5,8 +5,8 @@ interface Route {
   component: () => void;
 }
 
-class Router {
-  public routes: Route[];
+export class Router {
+  private readonly routes: Route[];
   public isStarted: boolean;
   public currentRoute: Nullable<Route>;
   constructor() {
@@ -20,11 +20,6 @@ class Router {
     return this;
   }
 
-  // outlet(): Block | undefined {
-  //   if (this.currentRoute) {
-  //     return this.currentRoute.component;
-  //   }
-  // }
   params(): Record<string, string> {
     const temp = { parent: '', path: '' };
     if (this.currentRoute) {
@@ -39,13 +34,17 @@ class Router {
     return temp;
   }
 
-  getRoute(path: string): boolean {
+  private getRoute(path: string): boolean {
     const found = this.routes.find(route => route.path === path);
     if (found) {
       this.currentRoute = found;
       return true;
     }
     return false;
+  }
+
+  getRoutes(): Route[] {
+    return this.routes;
   }
 
   onRouteChange(): void {
@@ -63,7 +62,7 @@ class Router {
   }
 
   init(): void {
-    window.onpopstate = event => {
+    window.onpopstate = () => {
       this.navigate();
     };
     this.navigate();

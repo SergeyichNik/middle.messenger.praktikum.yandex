@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { ChatListProps, ClassChatListProps } from './ChatList.types';
 import { router } from '../../core/Router';
@@ -11,7 +11,6 @@ export class ChatList extends Block<ClassChatListProps> {
     super({ ...props });
 
     this.setProps({
-      ...props,
       goToProfile: this.goToProfile.bind(this),
     });
   }

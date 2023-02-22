@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { ClassLinkProps, LinkProps } from './Link.types';
 import { router } from '../../core/Router';

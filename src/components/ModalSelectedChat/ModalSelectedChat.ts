@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { ClassModalSelectedChatProps, ModalSelectedChatProps } from './ModalSelectedChat.types';
 import { connect, MapDispatchToProps, MapStateToProps } from '../../lib/utils/connect';
@@ -6,7 +6,7 @@ import { removeChat, userSearch } from '../../store/thunks';
 import { AppState, UserModel } from '../../store/rootStore';
 import { addUsersToChat } from '../../store/thunks/addUsersToChat';
 
-export class ModalSelectedChatContainer extends Block<Partial<ClassModalSelectedChatProps>> {
+class ModalSelectedChatContainer extends Block<Partial<ClassModalSelectedChatProps>> {
   static componentName = 'ModalSelectedChat';
 
   constructor({ ...props }: ModalSelectedChatProps) {

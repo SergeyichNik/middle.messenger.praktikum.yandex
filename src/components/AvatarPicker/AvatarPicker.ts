@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { AvatarPickerProps, ClassAvatarPickerProps } from './AvatarPicker.types';
 import { BASE_API } from '../../api/config';

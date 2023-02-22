@@ -1,11 +1,11 @@
-import Block from 'core/Block';
+import { Block } from 'core/Block';
 import './style.css';
 import { ClassUserCardSmallProps, UserCardSmallProps } from './UserCardSmall.types';
 import { connect, MapDispatchToProps, MapStateToProps } from '../../lib/utils/connect';
 import { AppState } from '../../store/rootStore';
 import { removeUserFromChat } from '../../store/thunks/removeUserFromChat';
 
-export class UserCardSmallContainer extends Block<Partial<ClassUserCardSmallProps>> {
+class UserCardSmallContainer extends Block<Partial<ClassUserCardSmallProps>> {
   static componentName = 'UserCardSmall';
 
   constructor({ ...props }: UserCardSmallProps) {
@@ -44,7 +44,7 @@ const mapDispatchToProps: MapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps: MapStateToProps<AppState> = state => {
+const mapStateToProps: MapStateToProps<AppState> = () => {
   return {};
 };
 
